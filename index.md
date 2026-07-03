@@ -5,7 +5,7 @@ title: Tumelo Masinga | Tech Portfolio
 
 # Tumelo Masinga
 ### Application Development Specialist & Infrastructure Strategist
-📍 Johannesburg, South Africa | [GitHub Profile](https://github.com/your-username)
+📍 Johannesburg, South Africa | [GitHub Profile](https://github.com/MasingaTumelo)
 
 ---
 
