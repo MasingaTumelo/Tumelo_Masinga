@@ -56,4 +56,4 @@ Building on my practical foundations, I specialize in developing, deploying, and
 * **Architectural Interests:** Microservices, Cloud Infrastructure (AWS/Azure), Data Pipelines & Network Topologies.
 
 ---
-> "Always learning. Always building. Always optimizing."
+> "Always learning. Always building."
