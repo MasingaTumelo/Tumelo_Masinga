@@ -1,0 +1,10 @@
+title: Tumelo Masinga | Portfolio
+author: Tumelo Masinga
+description: Application Development Specialist & Infrastructure Strategist bridging technical logic with industrial project management.
+theme: minima
+
+# Optional but highly recommended for the minima theme:
+show_excerpts: true
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
