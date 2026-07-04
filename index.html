@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tumelo Masinga — Application Development &amp; Infrastructure Strategy</title>
+<meta name="description" content="Tumelo Masinga — Application Development Specialist & Infrastructure Strategist. Portfolio, skills, and academic roadmap.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0B0E14;
+    --bg-panel: #10141C;
+    --paper: #E8ECF1;
+    --blue: #4A9EFF;
+    --blue-dim: #2E5C8A;
+    --steel: #7C8B9E;
+    --border: #232B38;
+    --amber: #F0A857;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--bg);
+    color:var(--paper);
+    font-family:var(--font-body);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  a{color:var(--blue);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  ::selection{background:var(--blue-dim);color:var(--paper);}
+
+  :focus-visible{
+    outline:2px solid var(--blue);
+    outline-offset:3px;
+  }
+
+  /* Background grid texture */
+  .grid-bg{
+    position:fixed;
+    inset:0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size:48px 48px;
+    opacity:0.35;
+    pointer-events:none;
+    z-index:0;
+    mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+  }
+
+  .wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 32px;
+    position:relative;
+  }
+
+  /* Circuit trace — signature element */
+  .trace{
+    position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    width:2px;
+    z-index:1;
+    pointer-events:none;
+  }
+  .trace svg{
+    position:sticky;
+    top:0;
+    height:100vh;
+    width:2px;
+    overflow:visible;
+  }
+  @media (max-width:720px){ .trace{display:none;} }
+
+  /* Header */
+  header{
+    padding:120px 0 80px;
+    position:relative;
+    z-index:2;
+  }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--blue);
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:24px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:8px;height:8px;
+    background:var(--amber);
+    border-radius:50%;
+    box-shadow:0 0 8px var(--amber);
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:1;}
+    50%{opacity:0.4;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .eyebrow::before{animation:none;}
+  }
+
+  h1{
+    font-family:var(--font-display);
+    font-size:clamp(2.4rem, 6vw, 4.2rem);
+    font-weight:600;
+    line-height:1.05;
+    letter-spacing:-0.02em;
+    margin-bottom:18px;
+  }
+
+  .role{
+    font-family:var(--font-display);
+    font-size:clamp(1.05rem, 2.2vw, 1.4rem);
+    color:var(--blue);
+    font-weight:500;
+    margin-bottom:28px;
+  }
+
+  .meta-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    font-family:var(--font-mono);
+    font-size:14px;
+    color:var(--steel);
+  }
+  .meta-row span{display:flex;align-items:center;gap:8px;}
+
+  /* Section panels */
+  .panel{
+    position:relative;
+    padding:64px 0;
+    border-top:1px solid var(--border);
+    z-index:2;
+  }
+
+  .panel-label{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--steel);
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    margin-bottom:16px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .panel-label .tag{
+    color:var(--amber);
+    border:1px solid var(--amber);
+    padding:2px 8px;
+    border-radius:2px;
+    font-size:11px;
+  }
+
+  h2{
+    font-family:var(--font-display);
+    font-size:clamp(1.5rem, 3.2vw, 2rem);
+    font-weight:600;
+    margin-bottom:24px;
+    letter-spacing:-0.01em;
+  }
+
+  p{color:var(--paper);opacity:0.92;max-width:66ch;}
+  p + p{margin-top:14px;}
+
+  .lede{
+    font-size:1.08rem;
+    color:var(--steel);
+    max-width:62ch;
+  }
+
+  /* Capability grid */
+  .cap-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:var(--border);
+    border:1px solid var(--border);
+    margin-top:32px;
+  }
+  @media (max-width:640px){ .cap-grid{grid-template-columns:1fr;} }
+
+  .cap-cell{
+    background:var(--bg-panel);
+    padding:28px;
+  }
+
+  .cap-cell h3{
+    font-family:var(--font-display);
+    font-size:1.05rem;
+    font-weight:600;
+    margin-bottom:10px;
+    color:var(--paper);
+  }
+  .cap-cell p{
+    font-size:0.94rem;
+    color:var(--steel);
+  }
+  .cap-cell .stack{
+    margin-top:14px;
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--blue);
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .cap-cell .stack span{
+    border:1px solid var(--blue-dim);
+    padding:3px 8px;
+    border-radius:2px;
+  }
+
+  /* Roadmap / timeline */
+  .roadmap{
+    margin-top:36px;
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+  .stage{
+    display:grid;
+    grid-template-columns:90px 1fr;
+    gap:24px;
+    padding:24px 0;
+    border-top:1px solid var(--border);
+  }
+  .stage:first-child{border-top:none;}
+  .stage-year{
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--amber);
+    padding-top:2px;
+  }
+  .stage h3{
+    font-family:var(--font-display);
+    font-size:1.1rem;
+    margin-bottom:8px;
+  }
+  .stage p{font-size:0.94rem;color:var(--steel);}
+
+  .credential{
+    margin-top:40px;
+    padding-top:32px;
+    border-top:1px dashed var(--border);
+  }
+  .credential .school{
+    font-family:var(--font-mono);
+    font-size:12px;
+    color:var(--blue);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    margin-bottom:6px;
+  }
+  .credential h3{
+    font-family:var(--font-display);
+    font-size:1.15rem;
+    margin-bottom:8px;
+  }
+  .credential .status{
+    display:inline-block;
+    font-family:var(--font-mono);
+    font-size:11px;
+    color:var(--amber);
+    border:1px solid var(--amber);
+    padding:2px 8px;
+    border-radius:2px;
+    margin-left:10px;
+    vertical-align:middle;
+  }
+
+  /* Experience */
+  .role-card{
+    margin-top:28px;
+    padding:28px;
+    background:var(--bg-panel);
+    border:1px solid var(--border);
+    border-left:3px solid var(--blue);
+  }
+  .role-card .role-title{
+    font-family:var(--font-display);
+    font-size:1.15rem;
+    font-weight:600;
+    margin-bottom:4px;
+  }
+  .role-card .role-org{
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--steel);
+    margin-bottom:16px;
+  }
+  .role-card ul{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .role-card li{
+    padding-left:20px;
+    position:relative;
+    font-size:0.95rem;
+    color:var(--paper);
+    opacity:0.9;
+  }
+  .role-card li::before{
+    content:'→';
+    position:absolute;
+    left:0;
+    color:var(--blue);
+  }
+
+  /* Tech focus tags */
+  .tag-cloud{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:28px;
+  }
+  .tag-cloud span{
+    font-family:var(--font-mono);
+    font-size:13px;
+    padding:6px 14px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    color:var(--steel);
+    transition:all 0.2s ease;
+  }
+  .tag-cloud span:hover{
+    border-color:var(--blue);
+    color:var(--blue);
+  }
+
+  /* Footer */
+  footer{
+    padding:64px 0 80px;
+    border-top:1px solid var(--border);
+    text-align:center;
+    position:relative;
+    z-index:2;
+  }
+  .quote{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:1.2rem;
+    color:var(--steel);
+    margin-bottom:32px;
+  }
+  .links{
+    display:flex;
+    justify-content:center;
+    gap:24px;
+    font-family:var(--font-mono);
+    font-size:14px;
+  }
+  .links a{color:var(--paper);opacity:0.8;}
+  .links a:hover{color:var(--blue);opacity:1;}
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<div class="trace">
+  <svg viewBox="0 0 2 100" preserveAspectRatio="none">
+    <line x1="1" y1="0" x2="1" y2="100" stroke="#2A3441" stroke-width="1"/>
+    <line x1="1" y1="0" x2="1" y2="30" stroke="#4A9EFF" stroke-width="2">
+      <animate attributeName="y2" values="0;100;0" dur="8s" repeatCount="indefinite"/>
+      <animate attributeName="y1" values="0;70;0" dur="8s" repeatCount="indefinite"/>
+    </line>
+  </svg>
+</div>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Johannesburg, South Africa — Available for opportunities</div>
+    <h1>Tumelo Masinga</h1>
+    <div class="role">Application Development Specialist &amp; Infrastructure Strategist</div>
+    <p class="lede">Bridging low-level technical execution with high-level project leadership — building scalable, secure command-and-control software pipelines for real-world industrial systems.</p>
+    <div class="meta-row">
+      <span>◇ github.com/MasingaTumelo</span>
+      <span>◇ B.Sc Application Development, in progress</span>
+      <span>◇ Project Manager, Labohlano Trading</span>
+    </div>
+  </header>
+
+  <section class="panel" id="arc">
+    <div class="panel-label">01 — Trajectory</div>
+    <h2>The Strategic Arc</h2>
+    <p>I'm an Application Development student working the seam between two disciplines that rarely share a desk: systems architecture and operational management. Most developers optimize code. Most managers optimize logistics. I do both — because the infrastructure that runs a warehouse and the infrastructure that runs a cloud service are the same problem at different scales.</p>
+    <p>The trajectory: stack technical depth on top of practical business experience to architect and manage secure infrastructure for autonomous logistics, industrial networks, and large-scale digital transformation.</p>
+  </section>
+
+  <section class="panel" id="capabilities">
+    <div class="panel-label">02 — Capabilities</div>
+    <h2>Core Engineering Capabilities</h2>
+    <p class="lede">Developing, deploying, and managing responsive software systems and digital workflows.</p>
+
+    <div class="cap-grid">
+      <div class="cap-cell">
+        <h3>Mobile &amp; Native Ecosystems</h3>
+        <p>Android development and mobile application engineering built for real device constraints.</p>
+        <div class="stack"><span>Kotlin</span><span>Android SDK</span></div>
+      </div>
+      <div class="cap-cell">
+        <h3>Full-Stack Web Engineering</h3>
+        <p>Interactive web applications and responsive interfaces from the DOM up.</p>
+        <div class="stack"><span>JavaScript</span><span>Node.js</span><span>jQuery</span><span>HTML</span><span>CSS</span></div>
+      </div>
+      <div class="cap-cell">
+        <h3>System Programming &amp; Logic</h3>
+        <p>Structural software design grounded in discrete structures and low-level control.</p>
+        <div class="stack"><span>C</span><span>Java</span></div>
+      </div>
+      <div class="cap-cell">
+        <h3>Workflow Automation</h3>
+        <p>Custom cloud utilities and automation that remove manual steps from operational work.</p>
+        <div class="stack"><span>Google Apps Script</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="academics">
+    <div class="panel-label">03 — Academic Foundation</div>
+    <h2>Curriculum &amp; Technical Roadmap</h2>
+
+    <div class="credential">
+      <div class="school">Emeris — In Progress</div>
+      <h3>Bachelor of Computer and Information Science <span class="status">In Progress</span></h3>
+      <p>Specializing in Application Development.</p>
+
+      <div class="roadmap">
+        <div class="stage">
+          <div class="stage-year">Y1</div>
+          <div>
+            <h3>Foundations</h3>
+            <p>Programming 1A &amp; 1B · Computer Networks 1A &amp; 1B · Mathematical Principles for Computer Science · Information Systems 1A &amp; 1B · IT Professional Practice</p>
+          </div>
+        </div>
+        <div class="stage">
+          <div class="stage-year">Y2</div>
+          <div>
+            <h3>Cloud &amp; Security</h3>
+            <p>Principles of Security · Cloud Development A &amp; B · Programming 2A &amp; 2B · Information Systems 2A, 2B &amp; 2C</p>
+          </div>
+        </div>
+        <div class="stage">
+          <div class="stage-year">Y3</div>
+          <div>
+            <h3>Advanced Architecture</h3>
+            <p>Programming 3A, 3B, 3C &amp; 3D · Information Systems 3A, 3D &amp; 3E · Introduction to Research for ICT</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="credential">
+      <div class="school">IIE MSA — Completed</div>
+      <h3>Higher Certificate in Mobile Application &amp; Web Development</h3>
+      <p>Focused on front-end architectures, mobile application lifecycles, and interface accessibility compliance.</p>
+    </div>
+  </section>
+
+  <section class="panel" id="experience">
+    <div class="panel-label">04 — Professional Experience</div>
+    <h2>Leadership &amp; Enterprise Experience</h2>
+
+    <div class="role-card">
+      <div class="role-title">Project Manager</div>
+      <div class="role-org">Labohlano Trading 66 (Pty) Ltd</div>
+      <ul>
+        <li>Oversee operational logistics, supply workflow optimization, and cross-functional project execution.</li>
+        <li>Apply algorithmic thinking and structured systems analysis to scale business capacity and manage technical assets.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="panel" id="focus">
+    <div class="panel-label">05 — Emerging Focus</div>
+    <h2>Architecture &amp; Emerging Tech</h2>
+    <p class="lede">Languages, logic, and the architectural interests shaping where this trajectory is headed next.</p>
+    <div class="tag-cloud">
+      <span>Java</span><span>Kotlin</span><span>C</span><span>JavaScript</span>
+      <span>Logic Gates &amp; Discrete Structures</span><span>Microservices</span>
+      <span>AWS</span><span>Azure</span><span>Data Pipelines</span><span>Network Topologies</span>
+    </div>
+  </section>
+
+  <footer>
+    <div class="quote">"Always learning. Always building."</div>
+    <div class="links">
+      <a href="https://github.com/MasingaTumelo" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
