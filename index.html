@@ -136,16 +136,20 @@
     margin-bottom:28px;
   }
 
-  .meta-row{
-    display:flex;
-    flex-wrap:wrap;
-    gap:20px;
-    font-family:var(--font-mono);
-    font-size:14px;
-    color:var(--steel);
+  .meta-row {
+    display: flex;
+    flex-direction: column; /* This forces items to stack vertically */
+    gap: 10px;              /* Vertical spacing between items */
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--steel);
   }
-  .meta-row span{display:flex;align-items:center;gap:8px;}
 
+  .meta-row span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
   /* Section panels */
   .panel{
     position:relative;
@@ -399,9 +403,9 @@
     <div class="role">Application Development Specialist &amp; Infrastructure Strategist</div>
     <p class="lede">Bridging low-level technical execution with high-level project leadership — building scalable, secure command-and-control software pipelines for real-world industrial systems.</p>
     <div class="meta-row">
-      <span>◇ <a href="https://github.com/MasingaTumelo" target="_blank" rel="noopener">GitHub</a></span><br>
-      <span>◇ B.Sc Application Development, in progress</span><br>
-      <span>◇ Project Manager, Labohlano Trading</span><br>
+      <span>◇ <a href="https://github.com/MasingaTumelo" target="_blank" rel="noopener">GitHub</a></span>
+      <span>◇ B.Sc Application Development, in progress</span>
+      <span>◇ Project Manager, Labohlano Trading</span>
     </div>
   </header>
 
