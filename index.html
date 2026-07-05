@@ -21,375 +21,403 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #0B0E14;
-    --bg-panel: #10141C;
-    --paper: #E8ECF1;
-    --blue: #4A9EFF;
-    --blue-dim: #2E5C8A;
-    --steel: #7C8B9E;
-    --border: #232B38;
-    --amber: #F0A857;
-    --font-display: 'Space Grotesk', sans-serif;
-    --font-body: 'IBM Plex Sans', sans-serif;
-    --font-mono: 'IBM Plex Mono', monospace;
-  }
-
-  *{margin:0;padding:0;box-sizing:border-box;}
-
-  html{scroll-behavior:smooth;}
-
-  body{
-    background:var(--bg);
-    color:var(--paper);
-    font-family:var(--font-body);
-    line-height:1.6;
-    overflow-x:hidden;
-  }
-
-  a{color:var(--blue);text-decoration:none;}
-  a:hover{text-decoration:underline;}
-
-  ::selection{background:var(--blue-dim);color:var(--paper);}
-
-  :focus-visible{
-    outline:2px solid var(--blue);
-    outline-offset:3px;
-  }
-
-  /* Background grid texture */
-  .grid-bg{
-    position:fixed;
-    inset:0;
-    background-image:
-      linear-gradient(var(--border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size:48px 48px;
-    opacity:0.35;
-    pointer-events:none;
-    z-index:0;
-    mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
-  }
-
-  .wrap{
-    max-width:920px;
-    margin:0 auto;
-    padding:0 32px;
-    position:relative;
-  }
-
-  /* Circuit trace — signature element */
-  .trace{
-    position:absolute;
-    left:0;
-    top:0;
-    bottom:0;
-    width:2px;
-    z-index:1;
-    pointer-events:none;
-  }
-  .trace svg{
-    position:sticky;
-    top:0;
-    height:100vh;
-    width:2px;
-    overflow:visible;
-  }
-  @media (max-width:720px){ .trace{display:none;} }
-
-  /* Header */
-  header{
-    padding:120px 0 80px;
-    position:relative;
-    z-index:2;
-  }
-
-  .eyebrow{
-    font-family:var(--font-mono);
-    font-size:13px;
-    color:var(--blue);
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-bottom:24px;
-  }
-  .eyebrow::before{
-    content:'';
-    width:8px;height:8px;
-    background:var(--amber);
-    border-radius:50%;
-    box-shadow:0 0 8px var(--amber);
-    animation:pulse 2.4s ease-in-out infinite;
-  }
-  @keyframes pulse{
-    0%,100%{opacity:1;}
-    50%{opacity:0.4;}
-  }
-  @media (prefers-reduced-motion: reduce){
-    .eyebrow::before{animation:none;}
-  }
-
-  h1{
-    font-family:var(--font-display);
-    font-size:clamp(2.4rem, 6vw, 4.2rem);
-    font-weight:600;
-    line-height:1.05;
-    letter-spacing:-0.02em;
-    margin-bottom:18px;
-  }
-
-  .role{
-    font-family:var(--font-display);
-    font-size:clamp(1.05rem, 2.2vw, 1.4rem);
-    color:var(--blue);
-    font-weight:500;
-    margin-bottom:28px;
-  }
-
-  .meta-row {
-    display: flex;
-    flex-direction: column; 
-    gap: 10px;              
-    font-family: var(--font-mono);
-    font-size: 14px;
-    color: var(--steel);
-  }
-
-  .meta-row span {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  /* Section panels */
-  .panel{
-    position:relative;
-    padding:64px 0;
-    border-top:1px solid var(--border);
-    z-index:2;
-  }
-
-  .panel-label{
-    font-family:var(--font-mono);
-    font-size:12px;
-    color:var(--steel);
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    margin-bottom:16px;
-    display:flex;
-    align-items:center;
-    gap:12px;
-  }
-  .panel-label .tag{
-    color:var(--amber);
-    border:1px solid var(--amber);
-    padding:2px 8px;
-    border-radius:2px;
-    font-size:11px;
-  }
-
-  h2{
-    font-family:var(--font-display);
-    font-size:clamp(1.5rem, 3.2vw, 2rem);
-    font-weight:600;
-    margin-bottom:24px;
-    letter-spacing:-0.01em;
-  }
-
-  p{color:var(--paper);opacity:0.92;max-width:66ch;}
-  p + p{margin-top:14px;}
-
-  .lede{
-    font-size:1.08rem;
-    color:var(--steel);
-    max-width:62ch;
-  }
-
-  /* Capability grid */
-  .cap-grid{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:1px;
-    background:var(--border);
-    border:1px solid var(--border);
-    margin-top:32px;
-  }
-  @media (max-width:640px){ .cap-grid{grid-template-columns:1fr;} }
-
-  .cap-cell{
-    background:var(--bg-panel);
-    padding:28px;
-  }
-
-  .cap-cell h3{
-    font-family:var(--font-display);
-    font-size:1.05rem;
-    font-weight:600;
-    margin-bottom:10px;
-    color:var(--paper);
-  }
-  .cap-cell p{
-    font-size:0.94rem;
-    color:var(--steel);
-  }
-  .cap-cell .stack{
-    margin-top:14px;
-    font-family:var(--font-mono);
-    font-size:12px;
-    color:var(--blue);
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-  }
-  .cap-cell .stack span{
-    border:1px solid var(--blue-dim);
-    padding:3px 8px;
-    border-radius:2px;
-  }
-
-  /* Roadmap / timeline */
-  .roadmap{
-    margin-top:36px;
-    display:flex;
-    flex-direction:column;
-    gap:0;
-  }
-  .stage{
-    display:grid;
-    grid-template-columns:90px 1fr;
-    gap:24px;
-    padding:24px 0;
-    border-top:1px solid var(--border);
-  }
-  .stage:first-child{border-top:none;}
-  .stage-year{
-    font-family:var(--font-mono);
-    font-size:13px;
-    color:var(--amber);
-    padding-top:2px;
-  }
-  .stage h3{
-    font-family:var(--font-display);
-    font-size:1.1rem;
-    margin-bottom:8px;
-  }
-  .stage p{font-size:0.94rem;color:var(--steel);}
-
-  .credential{
-    margin-top:40px;
-    padding-top:32px;
-    border-top:1px dashed var(--border);
-  }
-  .credential .school{
-    font-family:var(--font-mono);
-    font-size:12px;
-    color:var(--blue);
-    text-transform:uppercase;
-    letter-spacing:0.08em;
-    margin-bottom:6px;
-  }
-  .credential h3{
-    font-family:var(--font-display);
-    font-size:1.15rem;
-    margin-bottom:8px;
-  }
-  .credential .status{
-    display:inline-block;
-    font-family:var(--font-mono);
-    font-size:11px;
-    color:var(--amber);
-    border:1px solid var(--amber);
-    padding:2px 8px;
-    border-radius:2px;
-    margin-left:10px;
-    vertical-align:middle;
-  }
-
-  /* Experience */
-  .role-card{
-    margin-top:28px;
-    padding:28px;
-    background:var(--bg-panel);
-    border:1px solid var(--border);
-    border-left:3px solid var(--blue);
-  }
-  .role-card .role-title{
-    font-family:var(--font-display);
-    font-size:1.15rem;
-    font-weight:600;
-    margin-bottom:4px;
-  }
-  .role-card .role-org{
-    font-family:var(--font-mono);
-    font-size:13px;
-    color:var(--steel);
-    margin-bottom:16px;
-  }
-  .role-card ul{
-    list-style:none;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-  }
-  .role-card li{
-    padding-left:20px;
-    position:relative;
-    font-size:0.95rem;
-    color:var(--paper);
-    opacity:0.9;
-  }
-  .role-card li::before{
-    content:'→';
-    position:absolute;
-    left:0;
-    color:var(--blue);
-  }
-
-  /* Tech focus tags */
-  .tag-cloud{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:28px;
-  }
-  .tag-cloud span{
-    font-family:var(--font-mono);
-    font-size:13px;
-    padding:6px 14px;
-    border:1px solid var(--border);
-    border-radius:20px;
-    color:var(--steel);
-    transition:all 0.2s ease;
-  }
-  .tag-cloud span:hover{
-    border-color:var(--blue);
-    color:var(--blue);
-  }
-
-  /* Footer */
-  footer{
-    padding:64px 0 80px;
-    border-top:1px solid var(--border);
-    text-align:center;
-    position:relative;
-    z-index:2;
-  }
-  .quote{
-    font-family:var(--font-display);
-    font-style:italic;
-    font-size:1.2rem;
-    color:var(--steel);
-    margin-bottom:32px;
-  }
-  .links{
-    display:flex;
-    justify-content:center;
-    gap:24px;
-    font-family:var(--font-mono);
-    font-size:14px;
-  }
-  .links a{color:var(--paper);opacity:0.8;}
-  .links a:hover{color:var(--blue);opacity:1;}
+      --bg: #0B0E14;
+      --bg-panel: #10141C;
+      --paper: #E8ECF1;
+      --blue: #4A9EFF;
+      --blue-dim: #2E5C8A;
+      --steel: #7C8B9E;
+      --border: #232B38;
+      --amber: #F0A857;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'IBM Plex Sans', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+  
+    *{margin:0;padding:0;box-sizing:border-box;}
+  
+    html{scroll-behavior:smooth;}
+  
+    body{
+      background:var(--bg);
+      color:var(--paper);
+      font-family:var(--font-body);
+      line-height:1.6;
+      overflow-x:hidden; /* 📱 Critical: Prevents broken horizontal scrolling on touch screens */
+      -webkit-text-size-adjust: 100%; /* 📱 Stops Android browsers from unexpectedly forcing font-resizing */
+    }
+  
+    a{color:var(--blue);text-decoration:none;}
+    a:hover{text-decoration:underline;}
+  
+    ::selection{background:var(--blue-dim);color:var(--paper);}
+  
+    :focus-visible{
+      outline:2px solid var(--blue);
+      outline-offset:3px;
+    }
+  
+    /* Background grid texture */
+    .grid-bg{
+      position:fixed;
+      inset:0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size:48px 48px;
+      opacity:0.35;
+      pointer-events:none;
+      z-index:0;
+      mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+      -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%); /* Required for older Android/Blink engines */
+    }
+  
+    .wrap{
+      max-width:920px;
+      margin:0 auto;
+      padding:0 24px; /* 📱 Optimized down from 32px to maximize readability on thin devices */
+      position:relative;
+    }
+  
+    /* Circuit trace — signature element */
+    .trace{
+      position:absolute;
+      left:0;
+      top:0;
+      bottom:0;
+      width:2px;
+      z-index:1;
+      pointer-events:none;
+    }
+    .trace svg{
+      position:sticky;
+      top:0;
+      height:100vh;
+      width:2px;
+      overflow:visible;
+    }
+    @media (max-width:720px){ .trace{display:none;} }
+  
+    /* Header */
+    header{
+      padding:80px 0 48px; /* 📱 Reduced from 120px/80px so users see actual content immediately without scrolling */
+      position:relative;
+      z-index:2;
+    }
+  
+    .eyebrow{
+      font-family:var(--font-mono);
+      font-size:12px; /* 📱 Tuned down slightly to guarantee it fits entirely on single mobile lines */
+      color:var(--blue);
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:24px;
+    }
+    .eyebrow::before{
+      content:'';
+      width:8px;height:8px;
+      background:var(--amber);
+      border-radius:50%;
+      box-shadow:0 0 8px var(--amber);
+      animation:pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse{
+      0%,100%{opacity:1;}
+      50%{opacity:0.4;}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .eyebrow::before{animation:none;}
+    }
+  
+    h1{
+      font-family:var(--font-display);
+      font-size:clamp(2.2rem, 8vw, 4.2rem); /* 📱 Increased minimum scale rate to look punchier on mobile viewports */
+      font-weight:600;
+      line-height:1.1;
+      letter-spacing:-0.02em;
+      margin-bottom:18px;
+    }
+  
+    .role{
+      font-family:var(--font-display);
+      font-size:clamp(1.1rem, 4vw, 1.4rem); /* 📱 Scaled up on mobile to give your primary title clear layout presence */
+      color:var(--blue);
+      font-weight:500;
+      margin-bottom:28px;
+      line-height:1.3;
+    }
+  
+    .meta-row {
+      display: flex;
+      flex-direction: column; 
+      gap: 12px;              
+      font-family: var(--font-mono);
+      font-size: 13px; /* 📱 Optimized for comfortable system reading on phones */
+      color: var(--steel);
+      border-left: 1px solid var(--border); /* 📱 Adds a clean design anchor for layout alignment on small screens */
+      padding-left: 12px;
+    }
+  
+    .meta-row span {
+      display: flex;
+      align-items: flex-start; /* 📱 Critical: aligns bullet markers to top if multi-line text wraps on tiny viewports */
+      gap: 8px;
+    }
+    
+    /* Section panels */
+    .panel{
+      position:relative;
+      padding:48px 0; /* 📱 Balanced padding from 64px to minimize scroll fatigue */
+      border-top:1px solid var(--border);
+      z-index:2;
+    }
+  
+    .panel-label{
+      font-family:var(--font-mono);
+      font-size:11px;
+      color:var(--steel);
+      letter-spacing:0.1em;
+      text-transform:uppercase;
+      margin-bottom:16px;
+      display:flex;
+      flex-wrap:wrap; /* 📱 Prevents design wrapping breaks if the string length pushes wide */
+      align-items:center;
+      gap:12px;
+    }
+    .panel-label .tag{
+      color:var(--amber);
+      border:1px solid var(--amber);
+      padding:2px 8px;
+      border-radius:2px;
+      font-size:11px;
+    }
+  
+    h2{
+      font-family:var(--font-display);
+      font-size:clamp(1.4rem, 5vw, 2rem);
+      font-weight:600;
+      margin-bottom:24px;
+      letter-spacing:-0.01em;
+    }
+  
+    p{color:var(--paper);opacity:0.92;max-width:66ch;}
+    p + p{margin-top:14px;}
+  
+    .lede{
+      font-size:1.05rem;
+      color:var(--steel);
+      max-width:62ch;
+    }
+  
+    /* Capability grid */
+    .cap-grid{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:1px;
+      background:var(--border);
+      border:1px solid var(--border);
+      margin-top:32px;
+    }
+    @media (max-width:640px){ .cap-grid{grid-template-columns:1fr;} }
+  
+    .cap-cell{
+      background:var(--bg-panel);
+      padding:24px; /* 📱 Slid down slightly from 28px to save width space on phones */
+    }
+  
+    .cap-cell h3{
+      font-family:var(--font-display);
+      font-size:1.05rem;
+      font-weight:600;
+      margin-bottom:10px;
+      color:var(--paper);
+    }
+    .cap-cell p{
+      font-size:0.94rem;
+      color:var(--steel);
+    }
+    .cap-cell .stack{
+      margin-top:14px;
+      font-family:var(--font-mono);
+      font-size:12px;
+      color:var(--blue);
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .cap-cell .stack span{
+      border:1px solid var(--blue-dim);
+      padding:3px 8px;
+      border-radius:2px;
+    }
+  
+    /* Roadmap / timeline */
+    .roadmap{
+      margin-top:24px;
+      display:flex;
+      flex-direction:column;
+      gap:0;
+    }
+    .stage{
+      display:grid;
+      grid-template-columns:90px 1fr;
+      gap:24px;
+      padding:24px 0;
+      border-top:1px solid var(--border);
+    }
+    .stage:first-child{border-top:none;}
+    
+    /* ⚡️ CRITICAL MOBILE FIX: Collapses the two-column grid into a clean vertical stack on phone screens */
+    @media (max-width: 520px) {
+      .stage {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 16px 0;
+      }
+      .stage-year {
+        color: var(--blue) !important; /* Shifting color accent highlights structural changes beautifully */
+      }
+    }
+    
+    .stage-year{
+      font-family:var(--font-mono);
+      font-size:13px;
+      color:var(--amber);
+      padding-top:2px;
+    }
+    .stage h3{
+      font-family:var(--font-display);
+      font-size:1.1rem;
+      margin-bottom:8px;
+    }
+    .stage p{font-size:0.94rem;color:var(--steel);}
+  
+    .credential{
+      margin-top:32px;
+      padding-top:24px;
+      border-top:1px dashed var(--border);
+    }
+    .credential .school{
+      font-family:var(--font-mono);
+      font-size:12px;
+      color:var(--blue);
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      margin-bottom:6px;
+    }
+    .credential h3{
+      font-family:var(--font-display);
+      font-size:1.15rem;
+      margin-bottom:8px;
+      line-height:1.3;
+    }
+    .credential .status{
+      display:inline-block;
+      font-family:var(--font-mono);
+      font-size:11px;
+      color:var(--amber);
+      border:1px solid var(--amber);
+      padding:2px 8px;
+      border-radius:2px;
+      margin-left:10px;
+      vertical-align:middle;
+    }
+    @media(max-width: 400px){
+      .credential .status { display: block; margin-left: 0; margin-top: 6px; width: max-content; }
+    }
+  
+    /* Experience */
+    .role-card{
+      margin-top:24px;
+      padding:24px; /* 📱 Scaled for elegant structural breathing room on narrow dimensions */
+      background:var(--bg-panel);
+      border:1px solid var(--border);
+      border-left:3px solid var(--blue);
+    }
+    .role-card .role-title{
+      font-family:var(--font-display);
+      font-size:1.15rem;
+      font-weight:600;
+      margin-bottom:4px;
+    }
+    .role-card .role-org{
+      font-family:var(--font-mono);
+      font-size:13px;
+      color:var(--steel);
+      margin-bottom:16px;
+    }
+    .role-card ul{
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .role-card li{
+      padding-left:20px;
+      position:relative;
+      font-size:0.95rem;
+      color:var(--paper);
+      opacity:0.9;
+    }
+    .role-card li::before{
+      content:'→';
+      position:absolute;
+      left:0;
+      color:var(--blue);
+    }
+  
+    /* Tech focus tags */
+    .tag-cloud{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px; /* 📱 Slightly tighter fit looks clean on mobile screen blocks */
+      margin-top:24px;
+    }
+    .tag-cloud span{
+      font-family:var(--font-mono);
+      font-size:12px; /* 📱 Optimized typography reading scale */
+      padding:6px 12px;
+      border:1px solid var(--border);
+      border-radius:20px;
+      color:var(--steel);
+      transition:all 0.2s ease;
+    }
+    
+    /* 📱 Interaction Optimization: Active touch state rules for Android users scrolling the page */
+    .tag-cloud span:active, .tag-cloud span:hover{
+      border-color:var(--blue);
+      color:var(--blue);
+      background: rgba(74, 158, 255, 0.05);
+    }
+  
+    /* Footer */
+    footer{
+      padding:48px 0 64px;
+      border-top:1px solid var(--border);
+      text-align:center;
+      position:relative;
+      z-index:2;
+    }
+    .quote{
+      font-family:var(--font-display);
+      font-style:italic;
+      font-size:1.1rem;
+      color:var(--steel);
+      margin-bottom:24px;
+      padding: 0 16px;
+    }
+    .links{
+      display:flex;
+      justify-content:center;
+      gap:24px;
+      font-family:var(--font-mono);
+      font-size:14px;
+    }
+    .links a{color:var(--paper);opacity:0.8; padding: 8px;} /* 📱 Added padding to maximize tap target size (UX Best Practice) */
+    .links a:hover{color:var(--blue);opacity:1;}
 </style>
 </head>
 <body>
