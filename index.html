@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tumelo Masinga — Application Development &amp; Project Management</title>
-  <meta name="description" content="Tumelo Masinga — Application Development Specialist &amp; Project Manager. Portfolio, technical skills, and implementation roadmap.">
+  <meta name="description" content="Tumelo Masinga — Application Development Specialist &amp; Project Manager. Portfolio, technical skills, and implementation roadmap." />
   
-  <link rel="canonical" href="https://masingatumelo.github.io/Tumelo_Masinga/">
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <!-- SEO / Global visibility -->
+  <link rel="canonical" href="https://masingatumelo.github.io/Tumelo_Masinga/" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   
-  <!-- Google Site Verification Tag -->
+  <!-- Google Site Verification -->
   <meta name="google-site-verification" content="vsGdkWJFxZX6eFghyZJCQ6DfKSqQ9BHQunwHasB_xlU" />
   
-  <!-- Structured Data JSON-LD for Search Engine Indexing -->
+  <!-- Structured Data for rich search results -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -24,526 +25,602 @@
       "https://www.linkedin.com/in/tumelo-masinga-55b5b871",
       "https://github.com/MasingaTumelo"
     ],
+    "email": "masinga.tumelo02@gmail.com",
     "hasCredential": [
       {
         "@type": "EducationalOccupationalCredential",
         "credentialCategory": "Higher Certificate",
         "name": "Higher Certificate in Mobile Application & Web Development",
-        "recognizedBy": {
-          "@type": "EducationalOrganization",
-          "name": "IIE MSA"
-        }
+        "recognizedBy": { "@type": "EducationalOrganization", "name": "IIE MSA" }
       },
       {
         "@type": "EducationalOccupationalCredential",
         "credentialCategory": "Bachelor Degree",
         "name": "Bachelor of Computer and Information Science in Application Development",
-        "recognizedBy": {
-          "@type": "EducationalOrganization",
-          "name": "EMERIS"
-        }
+        "recognizedBy": { "@type": "EducationalOrganization", "name": "EMERIS" }
       }
     ]
   }
   </script>
   
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Tumelo Masinga — Application Development &amp; Project Management">
-  <meta property="og:description" content="Bridging low-level technical execution with high-level project leadership — building scalable, secure command-and-control software pipelines for real-world enterprise systems.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://masingatumelo.github.io/Tumelo_Masinga/">
+  <!-- Open Graph / Social Cards -->
+  <meta property="og:title" content="Tumelo Masinga — Application Development &amp; Project Management" />
+  <meta property="og:description" content="Bridging low-level technical execution with high-level project leadership — building scalable, secure command-and-control software pipelines for real-world enterprise systems." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://masingatumelo.github.io/Tumelo_Masinga/" />
 
-  <!-- Typography & Performance Optimization -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-<style>
-  :root{
-    --bg: #0B0E14;
-    --bg-panel: #10141C;
-    --paper: #E8ECF1;
-    --blue: #4A9EFF;
-    --blue-dim: #2E5C8A;
-    --steel: #7C8B9E;
-    --border: #232B38;
-    --amber: #F0A857;
-    --font-display: 'Space Grotesk', sans-serif;
-    --font-body: 'IBM Plex Sans', sans-serif;
-    --font-mono: 'IBM Plex Mono', monospace;
-  }
+  <style>
+    :root {
+      --bg: #0B0E14;
+      --bg-panel: #10141C;
+      --paper: #E8ECF1;
+      --blue: #4A9EFF;
+      --blue-dim: #2E5C8A;
+      --steel: #7C8B9E;
+      --border: #232B38;
+      --amber: #F0A857;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'IBM Plex Sans', sans-serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
 
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
 
-  body{
-    background:var(--bg);
-    color:var(--paper);
-    font-family:var(--font-body);
-    line-height:1.6;
-    overflow-x:hidden; 
-    -webkit-text-size-adjust: 100%; 
-  }
+    body{
+      background:var(--bg);
+      color:var(--paper);
+      font-family:var(--font-body);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
 
-  a{color:var(--blue);text-decoration:none;}
-  a:hover{text-decoration:underline;}
+    a{color:var(--blue);text-decoration:none;}
+    a:hover{text-decoration:underline;}
 
-  ::selection{background:var(--blue-dim);color:var(--paper);}
+    ::selection{background:var(--blue-dim);color:var(--paper);}
+    :focus-visible{outline:2px solid var(--blue);outline-offset:3px;}
 
-  :focus-visible{
-    outline:2px solid var(--blue);
-    outline-offset:3px;
-  }
+    .grid-bg{
+      position:fixed;
+      inset:0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size:48px 48px;
+      opacity:0.35;
+      pointer-events:none;
+      z-index:0;
+      mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+      -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+    }
 
-  /* Background Grid Texture */
-  .grid-bg{
-    position:fixed;
-    inset:0;
-    background-image:
-      linear-gradient(var(--border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size:48px 48px;
-    opacity:0.35;
-    pointer-events:none;
-    z-index:0;
-    mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
-    -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
-  }
+    .wrap{
+      max-width:920px;
+      margin:0 auto;
+      padding:0 24px;
+      position:relative;
+    }
 
-  .wrap{
-    max-width:920px;
-    margin:0 auto;
-    padding:0 24px; 
-    position:relative;
-  }
+    .trace{
+      position:absolute;
+      left:0;
+      top:0;
+      bottom:0;
+      width:2px;
+      z-index:1;
+      pointer-events:none;
+    }
+    .trace svg{
+      position:sticky;
+      top:0;
+      height:100vh;
+      width:2px;
+      overflow:visible;
+    }
+    @media (max-width:720px){ .trace{display:none;} }
 
-  /* Circuit Trace */
-  .trace{
-    position:absolute;
-    left:0;
-    top:0;
-    bottom:0;
-    width:2px;
-    z-index:1;
-    pointer-events:none;
-  }
-  .trace svg{
-    position:sticky;
-    top:0;
-    height:100vh;
-    width:2px;
-    overflow:visible;
-  }
-  @media (max-width:720px){ .trace{display:none;} }
+    .site-nav{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(11,14,20,0.85);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{
+      max-width:920px;
+      margin:0 auto;
+      padding:0 24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      height:64px;
+    }
+    .nav-brand{
+      font-family:var(--font-mono);
+      font-size:14px;
+      color:var(--paper);
+      letter-spacing:0.04em;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .nav-brand::before{
+      content:'';
+      width:8px;height:8px;
+      background:var(--blue);
+      border-radius:1px;
+    }
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:24px;
+      font-family:var(--font-mono);
+      font-size:13px;
+    }
+    .nav-links a{
+      color:var(--steel);
+      transition:color 0.15s ease;
+    }
+    .nav-links a:hover{
+      color:var(--blue);
+      text-decoration:none;
+    }
 
-  /* Navigation Bar */
-  .site-nav{
-    position:sticky;
-    top:0;
-    z-index:50;
-    background:rgba(11,14,20,0.85);
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--border);
-  }
-  .nav-inner{
-    max-width:920px;
-    margin:0 auto;
-    padding:0 24px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    height:64px;
-  }
-  .nav-brand{
-    font-family:var(--font-mono);
-    font-size:14px;
-    color:var(--paper);
-    letter-spacing:0.04em;
-    display:flex;
-    align-items:center;
-    gap:8px;
-  }
-  .nav-brand::before{
-    content:'';
-    width:8px;height:8px;
-    background:var(--blue);
-    border-radius:1px;
-  }
-  .nav-links{
-    display:flex;
-    align-items:center;
-    gap:24px;
-    font-family:var(--font-mono);
-    font-size:13px;
-  }
-  .nav-links a{
-    color:var(--steel);
-    transition:color 0.15s ease;
-  }
-  .nav-links a:hover{
-    color:var(--blue);
-    text-decoration:none;
-  }
+    .hamburger{
+      display:none;
+      flex-direction:column;
+      justify-content:center;
+      gap:5px;
+      width:36px;
+      height:36px;
+      background:transparent;
+      border:1px solid var(--border);
+      border-radius:3px;
+      cursor:pointer;
+      padding:0;
+    }
+    .hamburger span{
+      display:block;
+      width:16px;
+      height:2px;
+      background:var(--paper);
+      margin:0 auto;
+      transition:transform 0.25s ease, opacity 0.25s ease;
+    }
+    .hamburger[aria-expanded="true"] span:nth-child(1){
+      transform:translateY(7px) rotate(45deg);
+    }
+    .hamburger[aria-expanded="true"] span:nth-child(2){
+      opacity:0;
+    }
+    .hamburger[aria-expanded="true"] span:nth-child(3){
+      transform:translateY(-7px) rotate(-45deg);
+    }
 
-  /* Hamburger Menu Button */
-  .hamburger{
-    display:none;
-    flex-direction:column;
-    justify-content:center;
-    gap:5px;
-    width:36px;
-    height:36px;
-    background:transparent;
-    border:1px solid var(--border);
-    border-radius:3px;
-    cursor:pointer;
-    padding:0;
-  }
-  .hamburger span{
-    display:block;
-    width:16px;
-    height:2px;
-    background:var(--paper);
-    margin:0 auto;
-    transition:transform 0.25s ease, opacity 0.25s ease;
-  }
-  .hamburger[aria-expanded="true"] span:nth-child(1){
-    transform:translateY(7px) rotate(45deg);
-  }
-  .hamburger[aria-expanded="true"] span:nth-child(2){
-    opacity:0;
-  }
-  .hamburger[aria-expanded="true"] span:nth-child(3){
-    transform:translateY(-7px) rotate(-45deg);
-  }
+    .mobile-menu{
+      display:none;
+      flex-direction:column;
+      padding:8px 24px 20px;
+      border-bottom:1px solid var(--border);
+      background:var(--bg);
+    }
+    .mobile-menu a{
+      font-family:var(--font-mono);
+      font-size:14px;
+      color:var(--paper);
+      padding:12px 0;
+      border-bottom:1px solid var(--border);
+    }
+    .mobile-menu a:last-child{border-bottom:none;}
+    .mobile-menu.open{display:flex;}
 
-  .mobile-menu{
-    display:none;
-    flex-direction:column;
-    padding:8px 24px 20px;
-    border-bottom:1px solid var(--border);
-    background:var(--bg);
-  }
-  .mobile-menu a{
-    font-family:var(--font-mono);
-    font-size:14px;
-    color:var(--paper);
-    padding:12px 0;
-    border-bottom:1px solid var(--border);
-  }
-  .mobile-menu a:last-child{border-bottom:none;}
-  .mobile-menu.open{display:flex;}
+    @media (max-width:720px){
+      .nav-links{display:none;}
+      .hamburger{display:flex;}
+    }
 
-  @media (max-width:720px){
-    .nav-links{display:none;}
-    .hamburger{display:flex;}
-  }
+    header{
+      padding:60px 0 48px;
+      position:relative;
+      z-index:2;
+    }
 
-  /* Header Section */
-  header{
-    padding:60px 0 48px; 
-    position:relative;
-    z-index:2;
-  }
+    .eyebrow{
+      font-family:var(--font-mono);
+      font-size:12px;
+      color:var(--blue);
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:24px;
+    }
+    .eyebrow::before{
+      content:'';
+      width:8px;height:8px;
+      background:var(--amber);
+      border-radius:50%;
+      box-shadow:0 0 8px var(--amber);
+      animation:pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse{
+      0%,100%{opacity:1;}
+      50%{opacity:0.4;}
+    }
+    @media (prefers-reduced-motion: reduce){
+      .eyebrow::before{animation:none;}
+    }
 
-  .eyebrow{
-    font-family:var(--font-mono);
-    font-size:12px; 
-    color:var(--blue);
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-bottom:24px;
-  }
-  .eyebrow::before{
-    content:'';
-    width:8px;height:8px;
-    background:var(--amber);
-    border-radius:50%;
-    box-shadow:0 0 8px var(--amber);
-    animation:pulse 2.4s ease-in-out infinite;
-  }
-  @keyframes pulse{
-    0%,100%{opacity:1;}
-    50%{opacity:0.4;}
-  }
-  @media (prefers-reduced-motion: reduce){
-    .eyebrow::before{animation:none;}
-  }
+    h1{
+      font-family:var(--font-display);
+      font-size:clamp(2.2rem, 8vw, 4.2rem);
+      font-weight:600;
+      line-height:1.1;
+      letter-spacing:-0.02em;
+      margin-bottom:18px;
+    }
 
-  h1{
-    font-family:var(--font-display);
-    font-size:clamp(2.2rem, 8vw, 4.2rem); 
-    font-weight:600;
-    line-height:1.1;
-    letter-spacing:-0.02em;
-    margin-bottom:18px;
-  }
+    .role{
+      font-family:var(--font-display);
+      font-size:clamp(1.1rem, 4vw, 1.4rem);
+      color:var(--blue);
+      font-weight:500;
+      margin-bottom:28px;
+      line-height:1.3;
+    }
 
-  .role{
-    font-family:var(--font-display);
-    font-size:clamp(1.1rem, 4vw, 1.4rem); 
-    color:var(--blue);
-    font-weight:500;
-    margin-bottom:28px;
-    line-height:1.3;
-  }
+    .lede{
+      font-size:1.05rem;
+      color:var(--steel);
+      max-width:62ch;
+    }
 
-  .lede{
-    font-size:1.05rem;
-    color:var(--steel);
-    max-width:62ch;
-  }
+    .meta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--steel);
+      border-left: 1px solid var(--border);
+      padding-left: 12px;
+    }
 
-  .meta-row {
-    display: flex;
-    flex-direction: column; 
-    gap: 12px;              
-    font-family: var(--font-mono);
-    font-size: 13px; 
-    color: var(--steel);
-    border-left: 1px solid var(--border); 
-    padding-left: 12px;
-  }
-
-  .profile-btn-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 4px;
-  }
-  .profile-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--bg-panel);
-    border: 1px solid var(--border);
-    padding: 6px 14px;
-    border-radius: 4px;
-    color: var(--paper) !important;
-    font-family: var(--font-mono);
-    font-size: 13px;
-    transition: border-color 0.15s ease, background 0.15s ease;
-  }
-  .profile-btn:hover {
-    border-color: var(--blue);
-    background: rgba(74, 158, 255, 0.05);
-    text-decoration: none;
-  }
-  .profile-btn svg {
-    width: 16px;
-    height: 16px;
-    fill: currentColor;
-  }
-
-  /* Section Panels */
-  .panel{
-    position:relative;
-    padding:48px 0; 
-    border-top:1px solid var(--border);
-    z-index:2;
-  }
-
-  .panel-label{
-    font-family:var(--font-mono);
-    font-size:11px;
-    color:var(--steel);
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    margin-bottom:16px;
-    display:flex;
-    flex-wrap:wrap; 
-    align-items:center;
-    gap:12px;
-  }
-
-  h2{
-    font-family:var(--font-display);
-    font-size:clamp(1.4rem, 5vw, 2rem);
-    font-weight:600;
-    margin-bottom:24px;
-    letter-spacing:-0.01em;
-  }
-
-  p{color:var(--paper);opacity:0.92;max-width:66ch;}
-  p + p{margin-top:14px;}
-
-  /* Capabilities Grid */
-  .cap-grid{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:1px;
-    background:var(--border);
-    border:1px solid var(--border);
-    margin-top:32px;
-  }
-  @media (max-width:640px){ .cap-grid{grid-template-columns:1fr;} }
-
-  .cap-cell{
-    background:var(--bg-panel);
-    padding:24px; 
-  }
-  .cap-cell h3{
-    font-family:var(--font-display);
-    font-size:1.05rem;
-    font-weight:600;
-    margin-bottom:10px;
-    color:var(--paper);
-  }
-  .cap-cell p{
-    font-size:0.94rem;
-    color:var(--steel);
-  }
-  .cap-cell .stack{
-    margin-top:14px;
-    font-family:var(--font-mono);
-    font-size:12px;
-    color:var(--blue);
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-  }
-  .cap-cell .stack span{
-    border:1px solid var(--blue-dim);
-    padding:3px 8px;
-    border-radius:2px;
-  }
-
-  /* Academic Roadmap */
-  .roadmap{
-    margin-top:24px;
-    display:flex;
-    flex-direction:column;
-  }
-  .stage{
-    display:grid;
-    grid-template-columns:90px 1fr;
-    gap:24px;
-    padding:24px 0;
-    border-top:1px solid var(--border);
-  }
-  .stage:first-child{border-top:none;}
-  @media (max-width: 520px) {
-    .stage {
-      grid-template-columns: 1fr;
+    .profile-btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 4px;
+      align-items: center;
+    }
+    .profile-btn {
+      display: inline-flex;
+      align-items: center;
       gap: 8px;
-      padding: 16px 0;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 4px;
+      color: var(--paper) !important;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      transition: border-color 0.15s ease, background 0.15s ease;
     }
-    .stage-year {
-      color: var(--blue) !important;
+    .profile-btn:hover {
+      border-color: var(--blue);
+      background: rgba(74, 158, 255, 0.05);
+      text-decoration: none;
     }
-  }
+    .profile-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
 
-  .stage-year{
-    font-family:var(--font-mono);
-    font-size:13px;
-    color:var(--amber);
-    padding-top:2px;
-  }
-  .stage h3{
-    font-family:var(--font-display);
-    font-size:1.1rem;
-    margin-bottom:8px;
-  }
-  .stage p{font-size:0.94rem;color:var(--steel);}
+    .panel{
+      position:relative;
+      padding:48px 0;
+      border-top:1px solid var(--border);
+      z-index:2;
+    }
+    .panel-label{
+      font-family:var(--font-mono);
+      font-size:11px;
+      color:var(--steel);
+      letter-spacing:0.1em;
+      text-transform:uppercase;
+      margin-bottom:16px;
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      gap:12px;
+    }
+    h2{
+      font-family:var(--font-display);
+      font-size:clamp(1.4rem, 5vw, 2rem);
+      font-weight:600;
+      margin-bottom:24px;
+      letter-spacing:-0.01em;
+    }
+    p{color:var(--paper);opacity:0.92;max-width:66ch;}
+    p + p{margin-top:14px;}
 
-  .credential{
-    margin-top:32px;
-    padding-top:24px;
-    border-top:1px dashed var(--border);
-  }
-  .credential .school{
-    font-family:var(--font-mono);
-    font-size:12px;
-    color:var(--blue);
-    text-transform:uppercase;
-    letter-spacing:0.08em;
-    margin-bottom:6px;
-  }
-  .credential h3{
-    font-family:var(--font-display);
-    font-size:1.15rem;
-    margin-bottom:8px;
-    line-height:1.3;
-  }
-  .credential .status{
-    display:inline-block;
-    font-family:var(--font-mono);
-    font-size:11px;
-    color:var(--amber);
-    border:1px solid var(--amber);
-    padding:2px 8px;
-    border-radius:2px;
-    margin-left:10px;
-    vertical-align:middle;
-  }
-  @media(max-width: 400px){
-    .credential .status { display: block; margin-left: 0; margin-top: 6px; width: max-content; }
-  }
+    .cap-grid{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:1px;
+      background:var(--border);
+      border:1px solid var(--border);
+      margin-top:32px;
+    }
+    @media (max-width:640px){ .cap-grid{grid-template-columns:1fr;} }
+    .cap-cell{
+      background:var(--bg-panel);
+      padding:24px;
+    }
+    .cap-cell h3{
+      font-family:var(--font-display);
+      font-size:1.05rem;
+      font-weight:600;
+      margin-bottom:10px;
+      color:var(--paper);
+    }
+    .cap-cell p{
+      font-size:0.94rem;
+      color:var(--steel);
+    }
+    .cap-cell .stack{
+      margin-top:14px;
+      font-family:var(--font-mono);
+      font-size:12px;
+      color:var(--blue);
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .cap-cell .stack span{
+      border:1px solid var(--blue-dim);
+      padding:3px 8px;
+      border-radius:2px;
+    }
 
-  /* Experience */
-  .role-card{
-    margin-top:24px;
-    padding:24px; 
-    background:var(--bg-panel);
-    border:1px solid var(--border);
-    border-left:3px solid var(--blue);
-  }
-  .role-card .role-title{
-    font-family:var(--font-display);
-    font-size:1.15rem;
-    font-weight:600;
-    margin-bottom:4px;
-  }
-  .role-card .role-org{
-    font-family:var(--font-mono);
-    font-size:13px;
-    color:var(--steel);
-    margin-bottom:16px;
-  }
+    .roadmap{
+      margin-top:24px;
+      display:flex;
+      flex-direction:column;
+    }
+    .stage{
+      display:grid;
+      grid-template-columns:90px 1fr;
+      gap:24px;
+      padding:24px 0;
+      border-top:1px solid var(--border);
+    }
+    .stage:first-child{border-top:none;}
+    @media (max-width: 520px) {
+      .stage {
+        grid-template-columns:1fr;
+        gap:8px;
+        padding:16px 0;
+      }
+      .stage-year{color:var(--blue) !important;}
+    }
+    .stage-year{
+      font-family:var(--font-mono);
+      font-size:13px;
+      color:var(--amber);
+      padding-top:2px;
+    }
+    .stage h3{
+      font-family:var(--font-display);
+      font-size:1.1rem;
+      margin-bottom:8px;
+    }
+    .stage p{font-size:0.94rem;color:var(--steel);}
 
-  /* Tag Cloud */
-  .tag-cloud{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px; 
-    margin-top:24px;
-  }
-  .tag-cloud span{
-    font-family:var(--font-mono);
-    font-size:12px; 
-    padding:6px 12px;
-    border:1px solid var(--border);
-    border-radius:20px;
-    color:var(--steel);
-    transition:all 0.2s ease;
-  }
-  .tag-cloud span:hover{
-    border-color:var(--blue);
-    color:var(--blue);
-    background: rgba(74, 158, 255, 0.05);
-  }
+    .credential{
+      margin-top:32px;
+      padding-top:24px;
+      border-top:1px dashed var(--border);
+    }
+    .credential .school{
+      font-family:var(--font-mono);
+      font-size:12px;
+      color:var(--blue);
+      text-transform:uppercase;
+      letter-spacing:0.08em;
+      margin-bottom:6px;
+    }
+    .credential h3{
+      font-family:var(--font-display);
+      font-size:1.15rem;
+      margin-bottom:8px;
+      line-height:1.3;
+    }
+    .credential .status{
+      display:inline-block;
+      font-family:var(--font-mono);
+      font-size:11px;
+      color:var(--amber);
+      border:1px solid var(--amber);
+      padding:2px 8px;
+      border-radius:2px;
+      margin-left:10px;
+      vertical-align:middle;
+    }
+    @media(max-width: 400px){
+      .credential .status { display:block; margin-left:0; margin-top:6px; width:max-content; }
+    }
 
-  /* Footer */
-  footer{
-    padding:48px 0 64px;
-    border-top:1px solid var(--border);
-    text-align:center;
-    position:relative;
-    z-index:2;
-  }
-  .quote{
-    font-family:var(--font-display);
-    font-style:italic;
-    font-size:1.1rem;
-    color:var(--steel);
-    margin-bottom:24px;
-    padding: 0 16px;
-  }
-</style>
+    .role-card{
+      margin-top:24px;
+      padding:24px;
+      background:var(--bg-panel);
+      border:1px solid var(--border);
+      border-left:3px solid var(--blue);
+    }
+    .role-card .role-title{
+      font-family:var(--font-display);
+      font-size:1.15rem;
+      font-weight:600;
+      margin-bottom:4px;
+    }
+    .role-card .role-org{
+      font-family:var(--font-mono);
+      font-size:13px;
+      color:var(--steel);
+      margin-bottom:16px;
+    }
+
+    .tag-cloud{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:24px;
+    }
+    .tag-cloud span{
+      font-family:var(--font-mono);
+      font-size:12px;
+      padding:6px 12px;
+      border:1px solid var(--border);
+      border-radius:20px;
+      color:var(--steel);
+      transition:all 0.2s ease;
+    }
+    .tag-cloud span:hover{
+      border-color:var(--blue);
+      color:var(--blue);
+      background: rgba(74, 158, 255, 0.05);
+    }
+
+    /* ===== CONTACT SECTION (prominent, no footer dropdown) ===== */
+    .contact-cta {
+      margin: 16px 0 8px;
+      padding: 36px 28px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-align: center;
+    }
+    .contact-cta h3 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+    .contact-cta p {
+      max-width: 100%;
+      color: var(--steel);
+      margin-bottom: 24px;
+      font-size: 1.05rem;
+    }
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--blue);
+      color: #0B0E14 !important;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.1s;
+      border: none;
+      cursor: pointer;
+      text-decoration: none !important;
+    }
+    .cta-btn:hover {
+      background: #6bb0ff;
+      transform: scale(1.02);
+      text-decoration: none !important;
+    }
+    .cta-btn-outline {
+      background: transparent;
+      color: var(--paper) !important;
+      border: 1px solid var(--border);
+    }
+    .cta-btn-outline:hover {
+      border-color: var(--blue);
+      background: rgba(74, 158, 255, 0.06);
+      transform: scale(1.02);
+      text-decoration: none !important;
+    }
+    .cta-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    @media (max-width: 480px) {
+      .cta-group {
+        flex-direction: column;
+        align-items: center;
+      }
+      .cta-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .contact-cta {
+        padding: 24px 16px;
+      }
+    }
+
+    /* Footer — simplified, no dropdown */
+    footer {
+      padding: 40px 0 48px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .footer-links a {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--steel);
+      transition: color 0.15s;
+    }
+    .footer-links a:hover {
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .quote {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--steel);
+      margin-bottom: 8px;
+      padding: 0 16px;
+    }
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--steel);
+      opacity: 0.6;
+      margin-top: 16px;
+    }
+  </style>
 </head>
 <body>
 
@@ -559,7 +636,7 @@
   </svg>
 </div>
 
-<!-- Header Navigation Bar -->
+<!-- Navigation -->
 <nav class="site-nav">
   <div class="nav-inner">
     <a href="#" class="nav-brand">TM.dev</a>
@@ -569,6 +646,7 @@
       <a href="#academics">Academics</a>
       <a href="#experience">Experience</a>
       <a href="#focus">Focus</a>
+      <a href="#contact">Contact</a>
     </div>
     <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
@@ -580,13 +658,14 @@
     <a href="#academics">Academics</a>
     <a href="#experience">Experience</a>
     <a href="#focus">Focus</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
 <div class="wrap">
 
   <header>
-    <div class="eyebrow">Johannesburg, South Africa — Available for opportunities</div>
+    <div class="eyebrow">Johannesburg, South Africa — Available worldwide</div>
     <h1>Tumelo Masinga</h1>
     <div class="role">Application Development Specialist &amp; Project Manager</div>
     
@@ -598,29 +677,25 @@
       <span>◇ Higher Certificate in Mobile Application &amp; Web Development, Complete</span>
       <span>◇ B.Sc Application Development, in progress</span>
       <span>◇ Project Manager, Labohlano Trading</span>
-        <span class="profile-btn-group" role="navigation" aria-label="Social and contact links">
-        <a href="https://github.com/MasingaTumelo" target="_blank" rel="noopener noreferrer" class="profile-btn" aria-label="GitHub profile of Tumelo Masinga">
-          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59..."></path>
-          </svg>
+      <span class="profile-btn-group" role="navigation" aria-label="Social and contact links">
+        <a href="https://github.com/MasingaTumelo" target="_blank" rel="noopener noreferrer" class="profile-btn" aria-label="GitHub">
+          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59..."></path></svg>
           GitHub
         </a>
-        <a href="https://www.linkedin.com/in/tumelo-masinga-55b5b871" target="_blank" rel="noopener noreferrer" class="profile-btn" aria-label="LinkedIn profile of Tumelo Masinga">
-          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401z..."></path>
-          </svg>
+        <a href="https://www.linkedin.com/in/tumelo-masinga-55b5b871" target="_blank" rel="noopener noreferrer" class="profile-btn" aria-label="LinkedIn">
+          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401z..."></path></svg>
           LinkedIn
         </a>
-        <a href="mailto:masinga.tumelo02@gmail.com" class="profile-btn" aria-label="Send email to Tumelo Masinga">
-          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114V5.383zm-.034 6.878-5.3-3.18-1.166.7a1 1 0 0 1-1 0l-1.166-.7-5.3 3.18A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.731z"></path>
-          </svg>
-          Email
+        <!-- Simple contact button in header (no dropdown) -->
+        <a href="#contact" class="profile-btn" style="border-color: var(--blue);">
+          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false" width="16" height="16" fill="currentColor"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/><path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/></svg>
+          Contact
         </a>
       </span>
     </div>
   </header>
 
+  <!-- ===== SECTIONS ===== -->
   <section class="panel" id="arc">
     <div class="panel-label">01 — Trajectory</div>
     <h2>The Strategic Arc</h2>
@@ -634,98 +709,35 @@
     <p class="lede">Developing, deploying, and managing responsive software systems and digital workflows.</p>
 
     <div class="cap-grid">
-      <div class="cap-cell">
-        <h3>Design &amp; User Experience</h3>
-        <p>User Interface (UI) &amp; User Experience (UX) layout prototyping and interface accessibility compliance.</p>
-        <div class="stack"><span>UI/UX Design</span><span>Writing</span><span>Web Design</span></div>
-      </div>
-      
-      <div class="cap-cell">
-        <h3>Mobile &amp; Native Ecosystems</h3>
-        <p>Android development and mobile application engineering built for real device constraints.</p>
-        <div class="stack"><span>Kotlin</span><span>Android Development</span><span>Mobile Applications</span></div>
-      </div>
-      
-      <div class="cap-cell">
-        <h3>Full-Stack Web Engineering</h3>
-        <p>Interactive web applications and responsive interfaces from the DOM up.</p>
-        <div class="stack"><span>JavaScript</span><span>Node.js</span><span>jQuery</span><span>Web Development</span><span>HTML</span><span>CSS</span></div>
-      </div>
-      
-      <div class="cap-cell">
-        <h3>System Programming &amp; Logic</h3>
-        <p>Structural software design grounded in logical constraints, pseudocode, and engineering theory.</p>
-        <div class="stack"><span>Pseudocode</span><span>Programming Logic</span><span>C</span><span>Java</span></div>
-      </div>
-      
-      <div class="cap-cell">
-        <h3>Workflow Automation</h3>
-        <p>Custom cloud utilities and automation that remove manual steps from operational work.</p>
-        <div class="stack"><span>Google Apps Script</span></div>
-      </div>
-
-      <div class="cap-cell">
-        <h3>Version Control &amp; Deployment</h3>
-        <p>Managing codebase repositories, branch tracking, and deployment pipelines using visual GUI workflows for seamless project implementation.</p>
-        <div class="stack"><span>GitHub</span><span>GitHub Desktop</span><span>Git</span><span>Version Control</span></div>
-      </div>
+      <div class="cap-cell"><h3>Design &amp; User Experience</h3><p>UI/UX layout prototyping and accessibility compliance.</p><div class="stack"><span>UI/UX Design</span><span>Writing</span><span>Web Design</span></div></div>
+      <div class="cap-cell"><h3>Mobile &amp; Native Ecosystems</h3><p>Android development built for real device constraints.</p><div class="stack"><span>Kotlin</span><span>Android Development</span><span>Mobile Applications</span></div></div>
+      <div class="cap-cell"><h3>Full-Stack Web Engineering</h3><p>Interactive web applications and responsive interfaces.</p><div class="stack"><span>JavaScript</span><span>Node.js</span><span>jQuery</span><span>Web Development</span><span>HTML</span><span>CSS</span></div></div>
+      <div class="cap-cell"><h3>System Programming &amp; Logic</h3><p>Structural software design grounded in logical constraints.</p><div class="stack"><span>Pseudocode</span><span>Programming Logic</span><span>C</span><span>Java</span></div></div>
+      <div class="cap-cell"><h3>Workflow Automation</h3><p>Custom cloud utilities that remove manual steps.</p><div class="stack"><span>Google Apps Script</span></div></div>
+      <div class="cap-cell"><h3>Version Control &amp; Deployment</h3><p>Codebase repositories, branch tracking, and deployment pipelines.</p><div class="stack"><span>GitHub</span><span>GitHub Desktop</span><span>Git</span><span>Version Control</span></div></div>
     </div>
   </section>
 
   <section class="panel" id="academics">
     <div class="panel-label">03 — Academic Foundation</div>
     <h2>Curriculum &amp; Technical Roadmap</h2>
-
     <div class="credential">
       <div class="school">Emeris — In Progress</div>
       <h3>Bachelor of Computer and Information Science <span class="status"> In Progress </span></h3>
       <p>Specializing in Application Development.</p>
-
       <div class="roadmap">
-        <div class="stage">
-          <div class="stage-year">Y1</div>
-          <div>
-            <h3>Foundations</h3>
-            <p>Programming 1A &amp; 1B · Computer Networks 1A &amp; 1B · Mathematical Principles for Computer Science · Information Systems 1A &amp; 1B · IT Professional Practice</p>
-          </div>
-        </div>
-        <div class="stage">
-          <div class="stage-year">Y2</div>
-          <div>
-            <h3>Cloud &amp; Security</h3>
-            <p>Principles of Security · Cloud Development A &amp; B · Programming 2A &amp; 2B · Information Systems 2A, 2B &amp; 2C</p>
-          </div>
-        </div>
-        <div class="stage">
-          <div class="stage-year">Y3</div>
-          <div>
-            <h3>Advanced Architecture</h3>
-            <p>Programming 3A, 3B, 3C &amp; 3D · Information Systems 3A, 3D &amp; 3E · Introduction to Research for ICT</p>
-          </div>
-        </div>
+        <div class="stage"><div class="stage-year">Y1</div><div><h3>Foundations</h3><p>Programming 1A &amp; 1B · Computer Networks 1A &amp; 1B · Mathematical Principles · Information Systems 1A &amp; 1B · IT Professional Practice</p></div></div>
+        <div class="stage"><div class="stage-year">Y2</div><div><h3>Cloud &amp; Security</h3><p>Principles of Security · Cloud Development A &amp; B · Programming 2A &amp; 2B · Information Systems 2A, 2B &amp; 2C</p></div></div>
+        <div class="stage"><div class="stage-year">Y3</div><div><h3>Advanced Architecture</h3><p>Programming 3A, 3B, 3C &amp; 3D · Information Systems 3A, 3D &amp; 3E · Introduction to Research for ICT</p></div></div>
       </div>
     </div>
-
     <div class="credential">
       <div class="school">IIE MSA — Completed</div>
       <h3>Higher Certificate in Mobile Application &amp; Web Development <span class="status" style="color:var(--blue); border-color:var(--blue-dim);">Complete</span></h3>
-      <p>Focused on front-end architectures, mobile application lifecycles, and interface accessibility compliance.</p>
-
+      <p>Focused on front-end architectures, mobile application lifecycles, and interface accessibility.</p>
       <div class="roadmap">
-        <div class="stage">
-          <div class="stage-year">S1</div>
-          <div>
-            <h3>Logic &amp; Core Structures</h3>
-            <p>Introduction to Programming Logic · Introduction to Mobile Application Development · Introduction to Quantitative Thinking and Techniques · Technical Writing and Communication</p>
-          </div>
-        </div>
-        <div class="stage">
-          <div class="stage-year">S2</div>
-          <div>
-            <h3>Design &amp; Integration</h3>
-            <p>Principles of UI and UX Design · Web Development (Introduction) · Mobile App Scripting · Work Integrated Learning 1</p>
-          </div>
-        </div>
+        <div class="stage"><div class="stage-year">S1</div><div><h3>Logic &amp; Core Structures</h3><p>Introduction to Programming Logic · Introduction to Mobile Application Development · Quantitative Thinking · Technical Writing</p></div></div>
+        <div class="stage"><div class="stage-year">S2</div><div><h3>Design &amp; Integration</h3><p>Principles of UI and UX Design · Web Development (Introduction) · Mobile App Scripting · Work Integrated Learning 1</p></div></div>
       </div>
     </div>
   </section>
@@ -736,12 +748,8 @@
     <div class="role-card">
       <div class="role-title">Project Manager</div>
       <div class="role-org">Labohlano Trading 66 (Pty) Ltd</div>
-      <p style="margin-top: 12px; margin-bottom: 10px;">
-        Oversee the end-to-end execution and physical implementation of funded initiatives, ensuring all deployments meet precise compliance benchmarks, timelines, and operational targets.
-      </p>
-      <p>
-        Apply algorithmic logic and structured systems analysis to optimize supply workflows, manage technical assets, and scale overall business capacity by bridging the gap between field execution and data-driven project tracking.
-      </p>
+      <p style="margin-top: 12px; margin-bottom: 10px;">Oversee the end-to-end execution and physical implementation of funded initiatives, ensuring all deployments meet precise compliance benchmarks, timelines, and operational targets.</p>
+      <p>Apply algorithmic logic and structured systems analysis to optimize supply workflows, manage technical assets, and scale overall business capacity by bridging the gap between field execution and data-driven project tracking.</p>
     </div>
   </section>
 
@@ -756,46 +764,53 @@
     </div>
   </section>
 
+  <!-- ===== CONTACT SECTION (prominent, no dropdown) ===== -->
+  <section class="panel" id="contact" style="border-top: 2px solid var(--blue);">
+    <div class="panel-label">06 — Get In Touch</div>
+    <div class="contact-cta">
+      <h3>Let's Connect — Worldwide</h3>
+      <p>I'm always open to new opportunities, collaborations, or just a conversation about tech, project management, and innovation. Reach out anytime.</p>
+      <div class="cta-group">
+        <a href="mailto:masinga.tumelo02@gmail.com" class="cta-btn">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/><path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/></svg>
+          Email Me
+        </a>
+        <a href="https://wa.me/Tumi_masinga" target="_blank" rel="noopener noreferrer" class="cta-btn cta-btn-outline">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="#" class="cta-btn cta-btn-outline" style="opacity:0.6; cursor:default;">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm0-8h-2V7h2v2zm6 8h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+          Telegram (soon)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER — simplified, no dropdown -->
   <footer>
     <div class="quote">"Always learning. Always building. Always optimizing."</div>
-    <div class="links" style="display: flex; justify-content: center; width: 100%;">
-      <span class="profile-btn-group" role="navigation" aria-label="Social and contact links">
-        <a href="https://github.com/MasingaTumelo" target="_blank" rel="noopener noreferrer" class="profile-btn" aria-label="GitHub profile of Tumelo Masinga">
-          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59..."></path>
-          </svg>
-          GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/tumelo-masinga-55b5b871" target="_blank" rel="noopener noreferrer" class="profile-btn" aria-label="LinkedIn profile of Tumelo Masinga">
-          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401z..."></path>
-          </svg>
-          LinkedIn
-        </a>
-        <a href="mailto:masinga.tumelo02@gmail.com" class="profile-btn" aria-label="Send email to Tumelo Masinga">
-          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114V5.383zm-.034 6.878-5.3-3.18-1.166.7a1 1 0 0 1-1 0l-1.166-.7-5.3 3.18A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.731z"></path>
-          </svg>
-          Email
-        </a>
-      </span>
+    <div class="footer-links">
+      <a href="https://github.com/MasingaTumelo" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/tumelo-masinga-55b5b871" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="mailto:masinga.tumelo02@gmail.com">Email</a>
+      <a href="https://wa.me/Tumi_masinga" target="_blank" rel="noopener noreferrer">WhatsApp</a>
     </div>
+    <div class="footer-copy">&copy; Tumelo Masinga — All rights reserved</div>
   </footer>
 
-</div>
+</div> <!-- .wrap -->
 
-<!-- Hamburger Navigation Toggle Script -->
+<!-- Hamburger Script -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    var btn = document.getElementById('hamburgerBtn');
-    var menu = document.getElementById('mobileMenu');
-
+    const btn = document.getElementById('hamburgerBtn');
+    const menu = document.getElementById('mobileMenu');
     if (btn && menu) {
       btn.addEventListener('click', function() {
-        var isOpen = menu.classList.toggle('open');
+        const isOpen = menu.classList.toggle('open');
         btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       });
-
       menu.querySelectorAll('a').forEach(function(link) {
         link.addEventListener('click', function() {
           menu.classList.remove('open');
