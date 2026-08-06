@@ -6,14 +6,15 @@
   <title>Tumelo Masinga — Application Development &amp; Project Management</title>
   <meta name="description" content="Tumelo Masinga — Application Development Specialist &amp; Project Manager. Portfolio, technical skills, and implementation roadmap." />
   
-  <!-- SEO / Global visibility -->
-  <link rel="canonical" href="https://masingatumelo.github.io/Tumelo_Masinga/" />
+  <!-- Primary SVG Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    
   <!-- Google Site Verification -->
   <meta name="google-site-verification" content="vsGdkWJFxZX6eFghyZJCQ6DfKSqQ9BHQunwHasB_xlU" />
   
-  <!-- Structured Data for rich search results -->
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,7 +44,7 @@
   }
   </script>
   
-  <!-- Open Graph / Social Cards -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Tumelo Masinga — Application Development &amp; Project Management" />
   <meta property="og:description" content="Bridging low-level technical execution with high-level project leadership — building scalable, secure command-and-control software pipelines for real-world enterprise systems." />
   <meta property="og:type" content="website" />
@@ -502,31 +503,63 @@
       background: rgba(74, 158, 255, 0.05);
     }
 
-    /* ===== CONTACT SECTION (prominent, no footer dropdown) ===== */
-    .contact-cta {
+    /* ===== START A CONVERSATION SECTION ===== */
+    .conversation-cta {
       margin: 16px 0 8px;
-      padding: 36px 28px;
+      padding: 40px 32px;
       background: var(--bg-panel);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 12px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    .contact-cta h3 {
+    .conversation-cta::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 30%, rgba(74, 158, 255, 0.03), transparent 60%);
+      pointer-events: none;
+    }
+    .conversation-cta .cta-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .conversation-cta h3 {
       font-family: var(--font-display);
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       margin-bottom: 8px;
+      position: relative;
     }
-    .contact-cta p {
+    .conversation-cta p {
       max-width: 100%;
       color: var(--steel);
-      margin-bottom: 24px;
+      margin-bottom: 6px;
       font-size: 1.05rem;
+      position: relative;
+    }
+    .conversation-cta .response-time {
+      color: var(--blue);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      margin-bottom: 24px;
+      display: block;
+      position: relative;
+    }
+    .conversation-cta .response-time::before {
+      content: '● ';
+      color: #4ADE80;
     }
     .cta-group {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 16px;
+      position: relative;
     }
     .cta-btn {
       display: inline-flex;
@@ -538,7 +571,7 @@
       font-size: 14px;
       font-weight: 600;
       padding: 12px 28px;
-      border-radius: 4px;
+      border-radius: 8px;
       transition: background 0.2s, transform 0.1s;
       border: none;
       cursor: pointer;
@@ -575,12 +608,14 @@
         width: 100%;
         justify-content: center;
       }
-      .contact-cta {
+      .conversation-cta {
         padding: 24px 16px;
+      }
+      .conversation-cta h3 {
+        font-size: 1.4rem;
       }
     }
 
-    /* Footer — simplified, no dropdown */
     footer {
       padding: 40px 0 48px;
       border-top: 1px solid var(--border);
@@ -619,6 +654,228 @@
       color: var(--steel);
       opacity: 0.6;
       margin-top: 16px;
+    }
+
+    /* ===== CHATBOT STYLES ===== */
+    .chat-toggle {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #0B0E14;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(74, 158, 255, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .chat-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 30px rgba(74, 158, 255, 0.6);
+    }
+    .chat-toggle svg {
+      width: 32px;
+      height: 32px;
+      fill: currentColor;
+    }
+
+    .chat-window {
+      position: fixed;
+      bottom: 100px;
+      right: 24px;
+      width: 380px;
+      max-width: calc(100vw - 48px);
+      max-height: 600px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.6);
+      z-index: 999;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .chat-window.open {
+      display: flex;
+    }
+
+    .chat-header {
+      padding: 16px 20px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chat-header h4 {
+      font-family: var(--font-display);
+      font-size: 16px;
+      color: var(--paper);
+    }
+    .chat-header-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .chat-reset {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--steel);
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      transition: all 0.2s;
+    }
+    .chat-reset:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+      background: rgba(240, 168, 87, 0.05);
+    }
+    .chat-close {
+      background: none;
+      border: none;
+      color: var(--steel);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 0 4px;
+    }
+    .chat-close:hover {
+      color: var(--paper);
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 16px 20px;
+      overflow-y: auto;
+      max-height: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .chat-message {
+      max-width: 85%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .chat-message.bot {
+      background: var(--bg);
+      color: var(--paper);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      border: 1px solid var(--border);
+    }
+    .chat-message.user {
+      background: var(--blue);
+      color: #0B0E14;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+    .chat-message .options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .chat-message .options button {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      color: var(--paper);
+      padding: 6px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 13px;
+      transition: all 0.2s;
+    }
+    .chat-message .options button:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      background: rgba(74, 158, 255, 0.05);
+    }
+    .chat-message .nav-link-btn {
+      display: inline-block;
+      background: var(--blue);
+      color: #0B0E14 !important;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      text-decoration: none !important;
+      margin-top: 6px;
+      font-size: 13px;
+    }
+    .chat-message .nav-link-btn:hover {
+      background: #6bb0ff;
+      text-decoration: none !important;
+    }
+
+    .chat-input {
+      padding: 12px 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 8px;
+      background: var(--bg);
+    }
+    .chat-input input {
+      flex: 1;
+      padding: 10px 14px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--paper);
+      font-family: var(--font-body);
+      font-size: 14px;
+      outline: none;
+    }
+    .chat-input input:focus {
+      border-color: var(--blue);
+    }
+    .chat-input input::placeholder {
+      color: var(--steel);
+    }
+    .chat-input button {
+      padding: 10px 18px;
+      background: var(--blue);
+      color: #0B0E14;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .chat-input button:hover {
+      background: #6bb0ff;
+    }
+
+    @media (max-width: 480px) {
+      .chat-window {
+        bottom: 80px;
+        right: 12px;
+        width: calc(100vw - 24px);
+        max-height: 500px;
+      }
+      .chat-toggle {
+        width: 52px;
+        height: 52px;
+        font-size: 22px;
+        bottom: 16px;
+        right: 16px;
+      }
     }
   </style>
 </head>
@@ -690,7 +947,6 @@
           </svg>
           LinkedIn
         </a>
-        <!-- Simple contact button in header (no dropdown) -->
         <a href="#contact" class="profile-btn" style="border-color: var(--blue);" aria-label="Contact">
           <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true" focusable="false">
             <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.708 2.825L15 11.105V5.383zm-.034 6.876-5.64-4.23-1.326.795a1 1 0 0 1-1.06 0l-1.325-.795-5.64 4.23A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741zM1 11.105l4.708-2.897L1 5.383v5.722z"/>
@@ -770,12 +1026,14 @@
     </div>
   </section>
 
-  <!-- ===== CONTACT SECTION (prominent, no dropdown) ===== -->
+  <!-- ===== START A CONVERSATION SECTION ===== -->
   <section class="panel" id="contact" style="border-top: 2px solid var(--blue);">
-    <div class="panel-label">06 — Get In Touch</div>
-    <div class="contact-cta">
-      <h3>Let's Connect — Worldwide</h3>
-      <p>I'm always open to new opportunities, collaborations, or just a conversation about tech, project management, and innovation. Reach out anytime.</p>
+    <div class="panel-label">06 — Start a Conversation</div>
+    <div class="conversation-cta">
+      <span class="cta-icon">💬</span>
+      <h3>Start a Conversation</h3>
+      <p>Let's talk about your project — I'm here to help.</p>
+      <span class="response-time">I typically reply within a few hours.</span>
       <div class="cta-group">
         <a href="mailto:masinga.tumelo02@gmail.com" class="cta-btn">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/><path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/></svg>
@@ -792,10 +1050,13 @@
           Telegram (soon)
         </a>
       </div>
+      <div style="margin-top: 16px; font-family: var(--font-mono); font-size: 11px; color: var(--steel); opacity: 0.5;">
+        Tumelo Masinga · Application Development &amp; Project Management
+      </div>
     </div>
   </section>
 
-  <!-- FOOTER — simplified, no dropdown -->
+  <!-- FOOTER -->
   <footer>
     <div class="quote">"Always learning. Always building. Always optimizing."</div>
     <div class="footer-links">
@@ -809,9 +1070,30 @@
 
 </div> <!-- .wrap -->
 
-<!-- Hamburger Script -->
+<!-- ===== CHATBOT WIDGET ===== -->
+<button class="chat-toggle" id="chatToggle" aria-label="Open chat">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12z"/></svg>
+</button>
+
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <h4>💬 Let's Chat</h4>
+    <div class="chat-header-actions">
+      <button class="chat-reset" id="chatReset">↺ Start Over</button>
+      <button class="chat-close" id="chatClose">✕</button>
+    </div>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-input">
+    <input type="text" id="chatInput" placeholder="Type your reply..." autocomplete="off">
+    <button id="chatSend">Send</button>
+  </div>
+</div>
+
+<!-- Hamburger + Chatbot Script -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    // ===== HAMBURGER MENU =====
     const btn = document.getElementById('hamburgerBtn');
     const menu = document.getElementById('mobileMenu');
     if (btn && menu) {
@@ -826,6 +1108,212 @@
         });
       });
     }
+
+    // ===== CHATBOT =====
+    const chatToggle = document.getElementById('chatToggle');
+    const chatWindow = document.getElementById('chatWindow');
+    const chatClose = document.getElementById('chatClose');
+    const chatReset = document.getElementById('chatReset');
+    const chatMessages = document.getElementById('chatMessages');
+    const chatInput = document.getElementById('chatInput');
+    const chatSend = document.getElementById('chatSend');
+
+    let step = 0;
+    let projectType = '';
+    let projectDesc = '';
+    let userEmail = '';
+
+    function resetChat() {
+      chatMessages.innerHTML = '';
+      step = 0;
+      projectType = '';
+      projectDesc = '';
+      userEmail = '';
+      startChat();
+    }
+
+    chatToggle.addEventListener('click', function() {
+      chatWindow.classList.toggle('open');
+      if (chatWindow.classList.contains('open') && chatMessages.children.length === 0) {
+        startChat();
+      }
+    });
+
+    chatClose.addEventListener('click', function() {
+      chatWindow.classList.remove('open');
+    });
+
+    chatReset.addEventListener('click', function() {
+      resetChat();
+    });
+
+    chatInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    chatSend.addEventListener('click', function() {
+      sendMessage();
+    });
+
+    function startChat() {
+      addMessage('bot', "👋 Hey there! I'm Tumelo — a developer, project manager, and problem-solver.");
+      setTimeout(() => {
+        addMessage('bot', "Whether you need a mobile app, a website, or just some advice, I'm here to help. What type of project are you thinking about?");
+        addOptions(['📱 Mobile App', '🌐 Website']);
+      }, 800);
+      step = 1;
+    }
+
+    function sendMessage() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      
+      addMessage('user', text);
+      chatInput.value = '';
+      
+      if (step === 1) {
+        const lower = text.toLowerCase();
+        if (lower.includes('mobile') || lower.includes('app')) {
+          projectType = 'Mobile App';
+          addMessage('bot', "Awesome! I love building mobile apps. 📱 I have experience with Kotlin, Android, and cross-platform solutions.");
+          setTimeout(() => {
+            addMessage('bot', "Tell me a bit about what you want to build — I'm all ears!");
+          }, 700);
+          step = 2;
+        } else if (lower.includes('web') || lower.includes('site') || lower.includes('website')) {
+          projectType = 'Website';
+          addMessage('bot', "Great choice! I've built everything from simple landing pages to complex web applications. 🌐");
+          setTimeout(() => {
+            addMessage('bot', "What kind of website are you looking to create? Share your vision with me.");
+          }, 700);
+          step = 2;
+        } else {
+          addMessage('bot', "I didn't quite get that. Are you thinking of a Mobile App or a Website? Let me know!");
+          addOptions(['📱 Mobile App', '🌐 Website']);
+        }
+      } else if (step === 2) {
+        projectDesc = text;
+        addMessage('bot', "✅ Got it! Here's what I've captured so far:");
+        addMessage('bot', "📱 Project Type: <strong>" + projectType + "</strong><br>📝 Description: <strong>" + projectDesc + "</strong>");
+        setTimeout(() => {
+          addMessage('bot', "📧 I'd love to send you a brief and explore how we can work together. What's your email address?");
+        }, 800);
+        step = 3;
+      } else if (step === 3) {
+        if (text.includes('@') && text.includes('.')) {
+          userEmail = text;
+          addMessage('bot', "✅ Perfect! I've got everything I need.");
+          
+          addMessage('bot', "📋 <strong>Here's what we'll work on:</strong><br>" +
+            "📱 Project Type: " + projectType + "<br>" +
+            "📝 Description: " + projectDesc + "<br>" +
+            "📧 I'll reach you at: " + userEmail);
+          
+          sendLeadEmail(projectType, projectDesc, userEmail);
+          
+          setTimeout(() => {
+            addMessage('bot', "📧 I'm sending a brief to your email right now. I'm excited to explore this with you!");
+            addNavigationLinks();
+          }, 800);
+          step = 4;
+        } else {
+          addMessage('bot', "Hmm, that email doesn't look right. Could you please enter a valid email so I can stay in touch?");
+        }
+      }
+    }
+
+    function addMessage(type, text) {
+      const div = document.createElement('div');
+      div.className = 'chat-message ' + type;
+      div.innerHTML = text;
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function addOptions(options) {
+      const div = document.createElement('div');
+      div.className = 'chat-message bot';
+      const optionsDiv = document.createElement('div');
+      optionsDiv.className = 'options';
+      
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.textContent = opt;
+        btn.addEventListener('click', function() {
+          chatInput.value = opt;
+          sendMessage();
+        });
+        optionsDiv.appendChild(btn);
+      });
+      
+      div.appendChild(optionsDiv);
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function addNavigationLinks() {
+      const div = document.createElement('div');
+      div.className = 'chat-message bot';
+      
+      let links = '';
+      if (projectType === 'Mobile App') {
+        links = `
+          <strong>Explore what I can do:</strong><br>
+          • <a href="#capabilities" class="nav-link-btn" onclick="closeChatAndNavigate('capabilities')">📱 Mobile Dev Skills</a><br>
+          • <a href="#academics" class="nav-link-btn" onclick="closeChatAndNavigate('academics')">🎓 My Training</a><br>
+          • <a href="#contact" class="nav-link-btn" onclick="closeChatAndNavigate('contact')">📧 Get in Touch</a>
+        `;
+      } else if (projectType === 'Website') {
+        links = `
+          <strong>Explore what I can do:</strong><br>
+          • <a href="#capabilities" class="nav-link-btn" onclick="closeChatAndNavigate('capabilities')">🌐 Web Dev Skills</a><br>
+          • <a href="#experience" class="nav-link-btn" onclick="closeChatAndNavigate('experience')">💼 My Projects</a><br>
+          • <a href="#contact" class="nav-link-btn" onclick="closeChatAndNavigate('contact')">📧 Get in Touch</a>
+        `;
+      }
+      
+      div.innerHTML = links + `<br><small>I'm looking forward to working with you! 🚀</small>`;
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      
+      setTimeout(() => {
+        addMessage('bot', "💬 Feel free to ask me anything — I'm here to help turn your vision into reality!");
+      }, 1000);
+    }
+
+    function sendLeadEmail(type, description, email) {
+      const subject = encodeURIComponent('New Project Inquiry - ' + type);
+      const body = encodeURIComponent(
+        '--- New Project Inquiry ---\n\n' +
+        'Project Type: ' + type + '\n\n' +
+        'Project Description: ' + description + '\n\n' +
+        'Client Email: ' + email + '\n\n' +
+        '---\n' +
+        'Submitted: ' + new Date().toLocaleString() + '\n' +
+        'From: Tumelo Masinga Portfolio Chatbot'
+      );
+      window.open('mailto:masinga.tumelo02@gmail.com?subject=' + subject + '&body=' + body);
+    }
+
+    window.closeChatAndNavigate = function(sectionId) {
+      chatWindow.classList.remove('open');
+      setTimeout(() => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 300);
+    };
+
+    document.addEventListener('click', function(e) {
+      const isChat = chatWindow.contains(e.target) || chatToggle.contains(e.target);
+      if (!isChat && chatWindow.classList.contains('open')) {
+        chatWindow.classList.remove('open');
+      }
+    });
   });
 </script>
 
