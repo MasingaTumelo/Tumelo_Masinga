@@ -1368,6 +1368,7 @@
     let projectType = '';
     let projectDesc = '';
     let userEmail = '';
+    let waitingForResponse = false;
 
     function resetChat() {
       chatMessages.innerHTML = '';
@@ -1375,6 +1376,7 @@
       projectType = '';
       projectDesc = '';
       userEmail = '';
+      waitingForResponse = false;
       startChat();
     }
 
@@ -1414,19 +1416,30 @@
     }
 
     function sendMessage() {
+      if (waitingForResponse) return;
+      
       const text = chatInput.value.trim();
       if (!text) return;
       
       addMessage('user', text);
       chatInput.value = '';
+      waitingForResponse = true;
+      
+      // Process the message based on current step
+      processUserInput(text);
+    }
+
+    function processUserInput(text) {
+      const lower = text.toLowerCase();
       
       if (step === 1) {
-        const lower = text.toLowerCase();
+        // Step 1: Determine project type
         if (lower.includes('mobile') || lower.includes('app')) {
           projectType = 'Mobile App';
           addMessage('bot', "Awesome! I love building mobile apps. 📱 I have experience with Kotlin, Android, and cross-platform solutions.");
           setTimeout(() => {
             addMessage('bot', "Tell me a bit about what you want to build — I'm all ears!");
+            waitingForResponse = false;
           }, 700);
           step = 2;
         } else if (lower.includes('web') || lower.includes('site') || lower.includes('website')) {
@@ -1434,21 +1447,26 @@
           addMessage('bot', "Great choice! I've built everything from simple landing pages to complex web applications. 🌐");
           setTimeout(() => {
             addMessage('bot', "What kind of website are you looking to create? Share your vision with me.");
+            waitingForResponse = false;
           }, 700);
           step = 2;
         } else {
           addMessage('bot', "I didn't quite get that. Are you thinking of a Mobile App or a Website? Let me know!");
           addOptions(['📱 Mobile App', '🌐 Website']);
+          waitingForResponse = false;
         }
       } else if (step === 2) {
+        // Step 2: Get project description
         projectDesc = text;
         addMessage('bot', "✅ Got it! Here's what I've captured so far:");
         addMessage('bot', "📱 Project Type: <strong>" + escapeHtml(projectType) + "</strong><br>📝 Description: <strong>" + escapeHtml(projectDesc) + "</strong>");
         setTimeout(() => {
           addMessage('bot', "📧 I'd love to send you a brief and explore how we can work together. What's your email address?");
+          waitingForResponse = false;
         }, 800);
         step = 3;
       } else if (step === 3) {
+        // Step 3: Get email
         if (text.includes('@') && text.includes('.')) {
           userEmail = text;
           addMessage('bot', "✅ Perfect! I've got everything I need.");
@@ -1461,11 +1479,19 @@
           setTimeout(() => {
             addMessage('bot', "📧 I'm sending a brief to your email right now. I'm excited to explore this with you!");
             addNavigationLinks();
+            // Send the email
+            sendLeadEmail(projectType, projectDesc, userEmail);
+            waitingForResponse = false;
           }, 800);
           step = 4;
         } else {
           addMessage('bot', "Hmm, that email doesn't look right. Could you please enter a valid email so I can stay in touch?");
+          waitingForResponse = false;
         }
+      } else {
+        // Step 4 or beyond - general conversation
+        addMessage('bot', "Thanks for your message! I'll get back to you soon. In the meantime, feel free to explore my portfolio or reach out via the contact methods above.");
+        waitingForResponse = false;
       }
     }
 
