@@ -66,6 +66,7 @@
       --steel: #7C8B9E;
       --border: #232B38;
       --amber: #F0A857;
+      --green: #4ADE80;
       --font-display: 'Space Grotesk', sans-serif;
       --font-body: 'IBM Plex Sans', sans-serif;
       --font-mono: 'IBM Plex Mono', monospace;
@@ -504,6 +505,189 @@
       background: rgba(74, 158, 255, 0.05);
     }
 
+    /* ===== SUPPORT MY WORK SECTION ===== */
+    .support-cta {
+      margin: 16px 0 8px;
+      padding: 40px 32px;
+      background: var(--bg-panel);
+      border: 2px solid var(--green);
+      border-radius: 12px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .support-cta::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 30%, rgba(74, 222, 128, 0.05), transparent 60%);
+      pointer-events: none;
+    }
+    .support-cta .cta-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .support-cta h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      color: var(--green);
+      position: relative;
+    }
+    .support-cta p {
+      max-width: 100%;
+      color: var(--steel);
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+      position: relative;
+    }
+    .support-cta .student-badge {
+      display: inline-block;
+      background: rgba(74, 222, 128, 0.15);
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(74, 222, 128, 0.2);
+    }
+    .support-cta .response-time {
+      color: var(--blue);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      margin-bottom: 24px;
+      display: block;
+      position: relative;
+    }
+    .support-cta .response-time::before {
+      content: '● ';
+      color: var(--green);
+    }
+    .support-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      position: relative;
+    }
+    .support-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+      min-width: 160px;
+      flex: 1;
+      max-width: 220px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .support-card:hover {
+      border-color: var(--green);
+      transform: translateY(-4px);
+    }
+    .support-card .coin {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .support-card .coin-name {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--steel);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .support-card .address {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--paper);
+      background: var(--bg-panel);
+      padding: 6px 10px;
+      border-radius: 4px;
+      word-break: break-all;
+      display: block;
+      border: 1px solid var(--border);
+      margin-top: 6px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .support-card .address:hover {
+      border-color: var(--blue);
+    }
+    .support-card .copy-btn {
+      background: none;
+      border: none;
+      color: var(--steel);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      cursor: pointer;
+      margin-top: 4px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      transition: color 0.2s;
+    }
+    .support-card .copy-btn:hover {
+      color: var(--green);
+    }
+    .support-note {
+      margin-top: 16px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--steel);
+      opacity: 0.6;
+      position: relative;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--blue);
+      color: #0B0E14 !important;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.1s;
+      border: none;
+      cursor: pointer;
+      text-decoration: none !important;
+    }
+    .cta-btn:hover {
+      background: #6bb0ff;
+      transform: scale(1.02);
+      text-decoration: none !important;
+    }
+    .cta-btn-outline {
+      background: transparent;
+      color: var(--paper) !important;
+      border: 1px solid var(--border);
+    }
+    .cta-btn-outline:hover {
+      border-color: var(--blue);
+      background: rgba(74, 158, 255, 0.06);
+      transform: scale(1.02);
+      text-decoration: none !important;
+    }
+    .cta-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      position: relative;
+    }
+
     /* ===== START A CONVERSATION SECTION ===== */
     .conversation-cta {
       margin: 16px 0 8px;
@@ -555,52 +739,28 @@
       content: '● ';
       color: #4ADE80;
     }
-    .cta-group {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-      position: relative;
-    }
-    .cta-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--blue);
-      color: #0B0E14 !important;
-      font-family: var(--font-mono);
-      font-size: 14px;
-      font-weight: 600;
-      padding: 12px 28px;
-      border-radius: 8px;
-      transition: background 0.2s, transform 0.1s;
-      border: none;
-      cursor: pointer;
-      text-decoration: none !important;
-    }
-    .cta-btn:hover {
-      background: #6bb0ff;
-      transform: scale(1.02);
-      text-decoration: none !important;
-    }
-    .cta-btn-outline {
-      background: transparent;
-      color: var(--paper) !important;
-      border: 1px solid var(--border);
-    }
-    .cta-btn-outline:hover {
-      border-color: var(--blue);
-      background: rgba(74, 158, 255, 0.06);
-      transform: scale(1.02);
-      text-decoration: none !important;
-    }
-    .cta-btn svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-    }
 
     @media (max-width: 480px) {
+      .support-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      .support-card {
+        max-width: 100%;
+        width: 100%;
+      }
+      .support-cta {
+        padding: 24px 16px;
+      }
+      .support-cta h3 {
+        font-size: 1.4rem;
+      }
+      .conversation-cta {
+        padding: 24px 16px;
+      }
+      .conversation-cta h3 {
+        font-size: 1.4rem;
+      }
       .cta-group {
         flex-direction: column;
         align-items: center;
@@ -608,12 +768,6 @@
       .cta-btn {
         width: 100%;
         justify-content: center;
-      }
-      .conversation-cta {
-        padding: 24px 16px;
-      }
-      .conversation-cta h3 {
-        font-size: 1.4rem;
       }
     }
 
@@ -904,6 +1058,7 @@
       <a href="#academics">Academics</a>
       <a href="#experience">Experience</a>
       <a href="#focus">Focus</a>
+      <a href="#support">Support</a>
       <a href="#contact">Contact</a>
     </div>
     <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -916,6 +1071,7 @@
     <a href="#academics">Academics</a>
     <a href="#experience">Experience</a>
     <a href="#focus">Focus</a>
+    <a href="#support">Support</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -1027,9 +1183,57 @@
     </div>
   </section>
 
+  <!-- ===== SUPPORT MY WORK SECTION ===== -->
+  <section class="panel" id="support" style="border-top: 2px solid var(--green);">
+    <div class="panel-label">06 — Support My Work</div>
+    <div class="support-cta">
+      <span class="cta-icon">🚀</span>
+      <h3>Support My Work</h3>
+      <span class="student-badge">🎓 Student Developer</span>
+      <p>I'm a passionate student building a career in Application Development and Project Management.</p>
+      <p style="font-size: 0.95rem; color: var(--steel); margin-top: 4px;">Your support helps me afford the tools, resources, and certifications I need to grow.</p>
+      <span class="response-time">Every contribution, big or small, makes a difference</span>
+      
+      <div class="support-grid">
+        <!-- Bitcoin -->
+        <div class="support-card">
+          <span class="coin">₿</span>
+          <span class="coin-name">Bitcoin (BTC)</span>
+          <span class="address" onclick="copyAddress(this)">bc1qwm8lxm9ruler2hlacp7svj93p92svxde3uexky</span>
+          <button class="copy-btn" onclick="copyAddress(this.parentElement.querySelector('.address'))">📋 Copy</button>
+        </div>
+        <!-- Ethereum -->
+        <div class="support-card">
+          <span class="coin">⟠</span>
+          <span class="coin-name">Ethereum (ETH)</span>
+          <span class="address" onclick="copyAddress(this)">0x8b9eb0a293B2aB7C799a220b82cdF1aDF81302Ec</span>
+          <button class="copy-btn" onclick="copyAddress(this.parentElement.querySelector('.address'))">📋 Copy</button>
+        </div>
+        <!-- USDC -->
+        <div class="support-card">
+          <span class="coin">💵</span>
+          <span class="coin-name">USDC (ERC-20)</span>
+          <span class="address" onclick="copyAddress(this)">0x8b9eb0a293B2aB7C799a220b82cdF1aDF81302Ec</span>
+          <button class="copy-btn" onclick="copyAddress(this.parentElement.querySelector('.address'))">📋 Copy</button>
+        </div>
+        <!-- Solana -->
+        <div class="support-card">
+          <span class="coin">◎</span>
+          <span class="coin-name">Solana (SOL)</span>
+          <span class="address" onclick="copyAddress(this)">3XT4wbz4bYpCw3FtzxepYJBw5UCdTP3YVKhvyKSX32uD</span>
+          <button class="copy-btn" onclick="copyAddress(this.parentElement.querySelector('.address'))">📋 Copy</button>
+        </div>
+      </div>
+      
+      <div class="support-note">
+        💡 All addresses are verified. Contact me if you need help with any transaction.
+      </div>
+    </div>
+  </section>
+
   <!-- ===== START A CONVERSATION SECTION ===== -->
   <section class="panel" id="contact" style="border-top: 2px solid var(--blue);">
-    <div class="panel-label">06 — Start a Conversation</div>
+    <div class="panel-label">07 — Start a Conversation</div>
     <div class="conversation-cta">
       <span class="cta-icon">💬</span>
       <h3>Start a Conversation</h3>
@@ -1110,6 +1314,31 @@
         });
       });
     }
+
+    // ===== COPY ADDRESS FUNCTION =====
+    window.copyAddress = function(element) {
+      const address = element.textContent.trim();
+      navigator.clipboard.writeText(address).then(() => {
+        const originalText = element.textContent;
+        element.textContent = '✅ Copied!';
+        setTimeout(() => {
+          element.textContent = originalText;
+        }, 2000);
+      }).catch(() => {
+        // Fallback
+        const textArea = document.createElement('textarea');
+        textArea.value = address;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        const originalText = element.textContent;
+        element.textContent = '✅ Copied!';
+        setTimeout(() => {
+          element.textContent = originalText;
+        }, 2000);
+      });
+    };
 
     // ===== CHATBOT =====
     const chatToggle = document.getElementById('chatToggle');
@@ -1266,6 +1495,7 @@
           <strong>Explore what I can do:</strong><br>
           • <a href="#capabilities" class="nav-link-btn" onclick="closeChatAndNavigate('capabilities')">📱 Mobile Dev Skills</a><br>
           • <a href="#academics" class="nav-link-btn" onclick="closeChatAndNavigate('academics')">🎓 My Training</a><br>
+          • <a href="#support" class="nav-link-btn" onclick="closeChatAndNavigate('support')">🚀 Support My Work</a><br>
           • <a href="#contact" class="nav-link-btn" onclick="closeChatAndNavigate('contact')">📧 Get in Touch</a>
         `;
       } else if (projectType === 'Website') {
@@ -1273,6 +1503,7 @@
           <strong>Explore what I can do:</strong><br>
           • <a href="#capabilities" class="nav-link-btn" onclick="closeChatAndNavigate('capabilities')">🌐 Web Dev Skills</a><br>
           • <a href="#experience" class="nav-link-btn" onclick="closeChatAndNavigate('experience')">💼 My Projects</a><br>
+          • <a href="#support" class="nav-link-btn" onclick="closeChatAndNavigate('support')">🚀 Support My Work</a><br>
           • <a href="#contact" class="nav-link-btn" onclick="closeChatAndNavigate('contact')">📧 Get in Touch</a>
         `;
       }
