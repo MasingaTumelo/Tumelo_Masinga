@@ -73,7 +73,10 @@
     }
 
     *{margin:0;padding:0;box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
+    html{
+      scroll-behavior:smooth;
+      scroll-padding-top: 80px; 
+    }
 
     body{
       background:var(--bg);
@@ -88,6 +91,13 @@
 
     ::selection{background:var(--blue-dim);color:var(--paper);}
     :focus-visible{outline:2px solid var(--blue);outline-offset:3px;}
+
+    .skip-link{
+      position:absolute; left:-9999px; top:0; z-index:200;
+      background:var(--blue); color:#0B0E14; padding:10px 18px;
+      font-family:var(--font-mono); font-size:14px; border-radius:0 0 6px 0;
+    }
+    .skip-link:focus{left:0;}
 
     .grid-bg{
       position:fixed;
@@ -261,6 +271,9 @@
     }
     @media (prefers-reduced-motion: reduce){
       .eyebrow::before{animation:none;}
+      html{scroll-behavior:auto;}
+      .chat-message{animation:none;}
+      .trace svg line{animation:none;}
     }
 
     h1{
@@ -1035,8 +1048,10 @@
   </style>
 </head>
 <body>
+<a href="#arc" class="skip-link">Skip to content</a>
 
 <div class="grid-bg"></div>
+
 
 <div class="trace">
   <svg viewBox="0 0 2 100" preserveAspectRatio="none">
@@ -1061,7 +1076,7 @@
       <a href="#support">Support</a>
       <a href="#contact">Contact</a>
     </div>
-    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobileMenu">
+    <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -1200,28 +1215,28 @@
           <span class="coin">₿</span>
           <span class="coin-name">Bitcoin (BTC)</span>
           <span class="address" onclick="copyAddress(this)">bc1qwm8lxm9ruler2hlacp7svj93p92svxde3uexky</span>
-          <button class="copy-btn" onclick="copyAddress(this.parentElement.querySelector('.address'))">📋 Copy</button>
+          <button type="button" class="copy-btn" onclick="copyAddress(this.parentElement.querySelector('.address'))">📋 Copy</button>
         </div>
         <!-- Ethereum -->
         <div class="support-card">
           <span class="coin">⟠</span>
           <span class="coin-name">Ethereum (ETH)</span>
           <span class="address" onclick="copyAddress(this)">0x8b9eb0a293B2aB7C799a220b82cdF1aDF81302Ec</span>
-          <button class="copy-btn" onclick="copyAddress(this.parentElement.querySelector('.address'))">📋 Copy</button>
+          <button type="button" class="copy-btn" onclick="copyAddress(this.parentElement.querySelector('.address'))">📋 Copy</button>
         </div>
         <!-- USDC -->
         <div class="support-card">
           <span class="coin">💵</span>
           <span class="coin-name">USDC (ERC-20)</span>
           <span class="address" onclick="copyAddress(this)">0x8b9eb0a293B2aB7C799a220b82cdF1aDF81302Ec</span>
-          <button class="copy-btn" onclick="copyAddress(this.parentElement.querySelector('.address'))">📋 Copy</button>
+          <button type="button" class="copy-btn" onclick="copyAddress(this.parentElement.querySelector('.address'))">📋 Copy</button>
         </div>
         <!-- Solana -->
         <div class="support-card">
           <span class="coin">◎</span>
           <span class="coin-name">Solana (SOL)</span>
           <span class="address" onclick="copyAddress(this)">3XT4wbz4bYpCw3FtzxepYJBw5UCdTP3YVKhvyKSX32uD</span>
-          <button class="copy-btn" onclick="copyAddress(this.parentElement.querySelector('.address'))">📋 Copy</button>
+          <button type="button" class="copy-btn" onclick="copyAddress(this.parentElement.querySelector('.address'))">📋 Copy</button>
         </div>
       </div>
       
@@ -1285,14 +1300,14 @@
   <div class="chat-header">
     <h4>💬 Let's Chat</h4>
     <div class="chat-header-actions">
-      <button class="chat-reset" id="chatReset">↺ Start Over</button>
-      <button class="chat-close" id="chatClose">✕</button>
+      <button type="button" class="chat-reset" id="chatReset">↺ Start Over</button>
+      <button type="button" class="chat-close" id="chatClose">✕</button>
     </div>
   </div>
   <div class="chat-messages" id="chatMessages"></div>
   <div class="chat-input">
     <input type="text" id="chatInput" placeholder="Type your reply..." autocomplete="off">
-    <button id="chatSend">Send</button>
+    <button type="button" id="chatSend">Send</button>
   </div>
 </div>
 
@@ -1428,7 +1443,7 @@
       } else if (step === 2) {
         projectDesc = text;
         addMessage('bot', "✅ Got it! Here's what I've captured so far:");
-        addMessage('bot', "📱 Project Type: <strong>" + projectType + "</strong><br>📝 Description: <strong>" + projectDesc + "</strong>");
+        addMessage('bot', "📱 Project Type: <strong>" + escapeHtml(projectType) + "</strong><br>📝 Description: <strong>" + escapeHtml(projectDesc) + "</strong>");
         setTimeout(() => {
           addMessage('bot', "📧 I'd love to send you a brief and explore how we can work together. What's your email address?");
         }, 800);
@@ -1439,12 +1454,10 @@
           addMessage('bot', "✅ Perfect! I've got everything I need.");
           
           addMessage('bot', "📋 <strong>Here's what we'll work on:</strong><br>" +
-            "📱 Project Type: " + projectType + "<br>" +
-            "📝 Description: " + projectDesc + "<br>" +
-            "📧 I'll reach you at: " + userEmail);
-          
-          sendLeadEmail(projectType, projectDesc, userEmail);
-          
+          "📱 Project Type: " + escapeHtml(projectType) + "<br>" +
+           "📝 Description: " + escapeHtml(projectDesc) + "<br>" +
+           "📧 I'll reach you at: " + escapeHtml(userEmail));
+
           setTimeout(() => {
             addMessage('bot', "📧 I'm sending a brief to your email right now. I'm excited to explore this with you!");
             addNavigationLinks();
@@ -1456,10 +1469,20 @@
       }
     }
 
+    function escapeHtml(str) {
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+
     function addMessage(type, text) {
       const div = document.createElement('div');
       div.className = 'chat-message ' + type;
-      div.innerHTML = text;
+      if (type === 'user') {
+        div.textContent = text;           // never inject raw user input as HTML
+      } else {
+        div.innerHTML = text;             // bot HTML is controlled by you
+      }
       chatMessages.appendChild(div);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
