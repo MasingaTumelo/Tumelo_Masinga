@@ -1597,8 +1597,8 @@
           setTimeout(() => {
             addMessage('bot', "📧 I'm sending a brief to your email right now. I'm excited to explore this with you!");
             addNavigationLinks();
-            // Send the styled email
-            sendStyledLeadEmail(projectType, projectDesc, userEmail);
+            // Send the plain text email
+            sendPlainTextEmail(projectType, projectDesc, userEmail);
             waitingForResponse = false;
           }, 800);
           step = 4;
@@ -1684,204 +1684,33 @@
       }, 1000);
     }
 
-    // ===== CLIENT-FRIENDLY STYLED EMAIL FUNCTION =====
-    function sendStyledLeadEmail(type, description, email) {
+    // ===== PLAIN TEXT EMAIL FUNCTION (Client-Friendly) =====
+    function sendPlainTextEmail(type, description, email) {
       const subject = encodeURIComponent('New Project Inquiry - ' + type);
       
-      // Clean, professional email body for the client
-      const htmlBody = `
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <meta charset="UTF-8">
-          <style>
-            body {
-              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-              background-color: #f8f9fa;
-              color: #1a1a2e;
-              padding: 40px 20px;
-              margin: 0;
-              line-height: 1.6;
-            }
-            .container {
-              max-width: 580px;
-              margin: 0 auto;
-              background: #ffffff;
-              border-radius: 16px;
-              padding: 40px 36px;
-              box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-            }
-            .header {
-              border-bottom: 3px solid #4A9EFF;
-              padding-bottom: 20px;
-              margin-bottom: 28px;
-            }
-            .header h1 {
-              font-size: 24px;
-              font-weight: 700;
-              color: #1a1a2e;
-              margin: 0 0 4px 0;
-              letter-spacing: -0.02em;
-            }
-            .header .subtitle {
-              color: #6b7280;
-              font-size: 14px;
-              margin: 0;
-            }
-            .badge {
-              display: inline-block;
-              background: #4A9EFF;
-              color: #ffffff;
-              padding: 2px 14px;
-              border-radius: 20px;
-              font-weight: 600;
-              font-size: 11px;
-              letter-spacing: 0.04em;
-              margin-top: 6px;
-            }
-            .section {
-              margin: 24px 0;
-            }
-            .section-title {
-              font-size: 13px;
-              font-weight: 600;
-              color: #6b7280;
-              text-transform: uppercase;
-              letter-spacing: 0.06em;
-              margin-bottom: 10px;
-            }
-            .info-box {
-              background: #f3f4f6;
-              border-radius: 8px;
-              padding: 14px 18px;
-              margin: 4px 0;
-            }
-            .info-box .label {
-              color: #6b7280;
-              font-size: 12px;
-              font-weight: 500;
-              display: block;
-              margin-bottom: 2px;
-            }
-            .info-box .value {
-              font-size: 16px;
-              font-weight: 500;
-              color: #1a1a2e;
-            }
-            .value.highlight {
-              color: #4A9EFF;
-            }
-            .divider {
-              border: none;
-              border-top: 1px solid #e5e7eb;
-              margin: 28px 0;
-            }
-            .footer {
-              margin-top: 32px;
-              padding-top: 20px;
-              border-top: 1px solid #e5e7eb;
-              text-align: center;
-            }
-            .footer p {
-              color: #6b7280;
-              font-size: 13px;
-              margin: 4px 0;
-            }
-            .footer .name {
-              color: #4A9EFF;
-              font-weight: 600;
-            }
-            .footer .timestamp {
-              font-size: 12px;
-              color: #9ca3af;
-            }
-            .btn {
-              display: inline-block;
-              background: #4A9EFF;
-              color: #ffffff !important;
-              padding: 10px 28px;
-              border-radius: 8px;
-              text-decoration: none;
-              font-weight: 600;
-              font-size: 14px;
-              margin-top: 8px;
-              border: none;
-              cursor: pointer;
-            }
-            .btn:hover {
-              background: #3b82d6;
-            }
-            .brief-note {
-              background: #eff6ff;
-              border-left: 4px solid #4A9EFF;
-              padding: 14px 18px;
-              border-radius: 6px;
-              margin: 16px 0;
-              font-size: 14px;
-              color: #1e3a5f;
-            }
-            .brief-note strong {
-              color: #1a1a2e;
-            }
-          </style>
-        </head>
-        <body>
-          <div class="container">
-            <div class="header">
-              <h1>📋 Project Brief</h1>
-              <p class="subtitle">Your inquiry has been received</p>
-              <span class="badge">NEW</span>
-            </div>
-            
-            <div class="brief-note">
-              <strong>Hi there! 👋</strong><br>
-              Thanks for reaching out. Here's a summary of your project request:
-            </div>
-            
-            <div class="section">
-              <div class="section-title">📌 Project Details</div>
-              <div class="info-box">
-                <span class="label">Type</span>
-                <span class="value highlight">${escapeHtml(type)}</span>
-              </div>
-              <div class="info-box">
-                <span class="label">Description</span>
-                <span class="value">${escapeHtml(description)}</span>
-              </div>
-            </div>
-            
-            <div class="section">
-              <div class="section-title">📧 Contact Information</div>
-              <div class="info-box">
-                <span class="label">Email</span>
-                <span class="value highlight">${escapeHtml(email)}</span>
-              </div>
-            </div>
-            
-            <hr class="divider">
-            
-            <div style="text-align: center; margin: 8px 0 4px;">
-              <p style="color: #6b7280; font-size: 14px; margin-bottom: 8px;">
-                Ready to discuss this project?
-              </p>
-              <a href="mailto:masinga.tumelo02@gmail.com?subject=Re: Project Inquiry - ${escapeHtml(type)}&body=Hi Tumelo,%0A%0AI'm interested in discussing the project I submitted:%0A%0AProject: ${escapeHtml(type)}%0ADescription: ${escapeHtml(description)}%0A%0APlease let me know when you're available to chat.%0A%0AThanks!" class="btn">
-                ✉️ Send This Brief
-              </a>
-            </div>
-            
-            <div class="footer">
-              <p><strong class="name">Tumelo Masinga</strong> — Application Development &amp; Project Management</p>
-              <p class="timestamp">📅 Submitted: ${new Date().toLocaleString()}</p>
-              <p style="margin-top: 12px; font-size: 12px; color: #9ca3af;">
-                You'll receive a response within 24 hours.
-              </p>
-            </div>
-          </div>
-        </body>
-        </html>
-      `;
+      // Clean, professional plain text email
+      // The client sees this in their email client before sending
+      const plainTextBody = 
+        '📋 PROJECT BRIEF\n' +
+        '═══════════════════════════════════\n\n' +
+        'Hi there! 👋\n' +
+        'Thanks for reaching out. Here\'s a summary of your project request:\n\n' +
+        '📌 PROJECT DETAILS\n' +
+        '─────────────────────\n' +
+        'Type:        ' + type + '\n' +
+        'Description: ' + description + '\n\n' +
+        '📧 CONTACT INFORMATION\n' +
+        '─────────────────────\n' +
+        'Email: ' + email + '\n\n' +
+        '─────────────────────────────────\n\n' +
+        'Ready to discuss this project?\n' +
+        'Reply to this email to start the conversation.\n\n' +
+        '─────────────────────────────────\n' +
+        'Tumelo Masinga — Application Development & Project Management\n' +
+        'Submitted: ' + new Date().toLocaleString() + '\n' +
+        'You\'ll receive a response within 24 hours.';
       
-      const body = encodeURIComponent(htmlBody);
+      const body = encodeURIComponent(plainTextBody);
       window.open('mailto:masinga.tumelo02@gmail.com?subject=' + subject + '&body=' + body);
     }
 
