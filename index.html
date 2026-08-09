@@ -1684,31 +1684,28 @@
       }, 1000);
     }
 
-    // ===== PLAIN TEXT EMAIL FUNCTION (Client-Friendly) =====
+    // ===== PLAIN TEXT EMAIL FUNCTION (Client-Friendly - Minimalist) =====
     function sendPlainTextEmail(type, description, email) {
       const subject = encodeURIComponent('New Project Inquiry - ' + type);
       
-      // Clean, professional plain text email
-      // The client sees this in their email client before sending
+      // Clean, minimalist plain text email
       const plainTextBody = 
         '📋 PROJECT BRIEF\n' +
-        '═══════════════════════════════════\n\n' +
+        '\n' +
         'Hi there! 👋\n' +
-        'Thanks for reaching out. Here\'s a summary of your project request:\n\n' +
-        '📌 PROJECT DETAILS\n' +
-        '─────────────────────\n' +
+        'Thanks for reaching out. Here\'s a summary of your project request:\n' +
+        '\n' +
         'Type:        ' + type + '\n' +
-        'Description: ' + description + '\n\n' +
-        '📧 CONTACT INFORMATION\n' +
-        '─────────────────────\n' +
-        'Email: ' + email + '\n\n' +
-        '─────────────────────────────────\n\n' +
-        'Ready to discuss this project?\n' +
-        'Reply to this email to start the conversation.\n\n' +
-        '─────────────────────────────────\n' +
-        'Tumelo Masinga — Application Development & Project Management\n' +
-        'Submitted: ' + new Date().toLocaleString() + '\n' +
-        'You\'ll receive a response within 24 hours.';
+        'Description: ' + description + '\n' +
+        '\n' +
+        'Email:       ' + email + '\n' +
+        '\n' +
+        'Ready to discuss this project? Reply to this email.\n' +
+        '\n' +
+        '—\n' +
+        'Tumelo Masinga\n' +
+        'Application Development & Project Management\n' +
+        new Date().toLocaleString();
       
       const body = encodeURIComponent(plainTextBody);
       window.open('mailto:masinga.tumelo02@gmail.com?subject=' + subject + '&body=' + body);
