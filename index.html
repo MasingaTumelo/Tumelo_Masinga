@@ -1597,8 +1597,8 @@
           setTimeout(() => {
             addMessage('bot', "📧 I'm sending a brief to your email right now. I'm excited to explore this with you!");
             addNavigationLinks();
-            // Send the email
-            sendLeadEmail(projectType, projectDesc, userEmail);
+            // Send the styled email
+            sendStyledLeadEmail(projectType, projectDesc, userEmail);
             waitingForResponse = false;
           }, 800);
           step = 4;
@@ -1684,17 +1684,204 @@
       }, 1000);
     }
 
-    function sendLeadEmail(type, description, email) {
+    // ===== STYLED EMAIL FUNCTION =====
+    function sendStyledLeadEmail(type, description, email) {
       const subject = encodeURIComponent('New Project Inquiry - ' + type);
-      const body = encodeURIComponent(
-        '--- New Project Inquiry ---\n\n' +
-        'Project Type: ' + type + '\n\n' +
-        'Project Description: ' + description + '\n\n' +
-        'Client Email: ' + email + '\n\n' +
-        '---\n' +
-        'Submitted: ' + new Date().toLocaleString() + '\n' +
-        'From: Tumelo Masinga Portfolio Chatbot'
-      );
+      
+      // HTML styled email body
+      const htmlBody = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="UTF-8">
+          <style>
+            body {
+              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+              background-color: #0B0E14;
+              color: #E8ECF1;
+              padding: 40px 20px;
+              margin: 0;
+            }
+            .container {
+              max-width: 600px;
+              margin: 0 auto;
+              background: #10141C;
+              border: 1px solid #232B38;
+              border-radius: 12px;
+              padding: 40px 32px;
+            }
+            .header {
+              border-bottom: 2px solid #4A9EFF;
+              padding-bottom: 20px;
+              margin-bottom: 24px;
+            }
+            .header h1 {
+              font-family: 'Space Grotesk', sans-serif;
+              font-size: 28px;
+              font-weight: 600;
+              color: #4A9EFF;
+              margin: 0 0 4px 0;
+              letter-spacing: -0.02em;
+            }
+            .header .subtitle {
+              color: #7C8B9E;
+              font-size: 14px;
+              margin: 0;
+            }
+            .badge {
+              display: inline-block;
+              background: #4A9EFF;
+              color: #0B0E14;
+              padding: 4px 16px;
+              border-radius: 20px;
+              font-weight: 600;
+              font-size: 12px;
+              font-family: monospace;
+              margin-top: 8px;
+            }
+            .section {
+              margin: 24px 0;
+            }
+            .section-title {
+              font-family: 'Space Grotesk', sans-serif;
+              font-size: 14px;
+              font-weight: 600;
+              color: #4A9EFF;
+              text-transform: uppercase;
+              letter-spacing: 0.08em;
+              margin-bottom: 8px;
+            }
+            .info-box {
+              background: #0B0E14;
+              border: 1px solid #232B38;
+              border-radius: 8px;
+              padding: 16px 20px;
+              margin: 4px 0;
+            }
+            .info-box .label {
+              color: #7C8B9E;
+              font-size: 12px;
+              font-family: monospace;
+              display: block;
+              margin-bottom: 2px;
+            }
+            .info-box .value {
+              color: #E8ECF1;
+              font-size: 16px;
+              font-weight: 500;
+            }
+            .value.highlight {
+              color: #4A9EFF;
+            }
+            .divider {
+              border: none;
+              border-top: 1px dashed #232B38;
+              margin: 24px 0;
+            }
+            .footer {
+              margin-top: 32px;
+              padding-top: 24px;
+              border-top: 1px solid #232B38;
+              text-align: center;
+            }
+            .footer p {
+              color: #7C8B9E;
+              font-size: 13px;
+              margin: 4px 0;
+            }
+            .footer .name {
+              color: #4A9EFF;
+              font-weight: 600;
+            }
+            .footer .emoji {
+              font-size: 18px;
+            }
+            .footer .timestamp {
+              font-family: monospace;
+              font-size: 12px;
+              color: #7C8B9E;
+              opacity: 0.6;
+            }
+            .btn {
+              display: inline-block;
+              background: #4A9EFF;
+              color: #0B0E14 !important;
+              padding: 10px 24px;
+              border-radius: 8px;
+              text-decoration: none;
+              font-weight: 600;
+              font-size: 14px;
+              margin-top: 12px;
+            }
+            .btn:hover {
+              background: #6bb0ff;
+            }
+            .status-dot {
+              display: inline-block;
+              width: 10px;
+              height: 10px;
+              background: #4ADE80;
+              border-radius: 50%;
+              margin-right: 8px;
+              animation: pulse 2s ease-in-out infinite;
+            }
+            @keyframes pulse {
+              0%, 100% { opacity: 1; }
+              50% { opacity: 0.4; }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="header">
+              <h1>📬 New Project Inquiry</h1>
+              <p class="subtitle">From your portfolio chatbot — <span class="badge">NEW</span></p>
+            </div>
+            
+            <div class="section">
+              <div class="section-title">📋 Project Details</div>
+              <div class="info-box">
+                <span class="label">Project Type</span>
+                <span class="value highlight">${escapeHtml(type)}</span>
+              </div>
+              <div class="info-box">
+                <span class="label">Description</span>
+                <span class="value">${escapeHtml(description)}</span>
+              </div>
+            </div>
+            
+            <div class="section">
+              <div class="section-title">👤 Client Information</div>
+              <div class="info-box">
+                <span class="label">Email Address</span>
+                <span class="value highlight">${escapeHtml(email)}</span>
+              </div>
+            </div>
+            
+            <hr class="divider">
+            
+            <div class="section" style="text-align: center;">
+              <a href="mailto:${escapeHtml(email)}?subject=Re: Your Project Inquiry" class="btn">
+                ✉️ Reply to Client
+              </a>
+            </div>
+            
+            <div class="footer">
+              <p><span class="emoji">⚡</span> <span class="name">Tumelo Masinga</span> — Application Development &amp; Project Management</p>
+              <p class="timestamp">📅 Submitted: ${new Date().toLocaleString()}</p>
+              <p style="margin-top: 12px; font-size: 12px; opacity: 0.5;">
+                This inquiry was submitted through your portfolio chatbot.
+              </p>
+            </div>
+          </div>
+        </body>
+        </html>
+      `;
+      
+      // Encode the HTML body for the mailto link
+      const body = encodeURIComponent(htmlBody);
+      
+      // Open the email client with the styled email
       window.open('mailto:masinga.tumelo02@gmail.com?subject=' + subject + '&body=' + body);
     }
 
