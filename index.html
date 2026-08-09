@@ -1684,11 +1684,11 @@
       }, 1000);
     }
 
-    // ===== STYLED EMAIL FUNCTION =====
+    // ===== CLIENT-FRIENDLY STYLED EMAIL FUNCTION =====
     function sendStyledLeadEmail(type, description, email) {
       const subject = encodeURIComponent('New Project Inquiry - ' + type);
       
-      // HTML styled email body
+      // Clean, professional email body for the client
       const htmlBody = `
         <!DOCTYPE html>
         <html>
@@ -1696,96 +1696,94 @@
           <meta charset="UTF-8">
           <style>
             body {
-              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-              background-color: #0B0E14;
-              color: #E8ECF1;
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+              background-color: #f8f9fa;
+              color: #1a1a2e;
               padding: 40px 20px;
               margin: 0;
+              line-height: 1.6;
             }
             .container {
-              max-width: 600px;
+              max-width: 580px;
               margin: 0 auto;
-              background: #10141C;
-              border: 1px solid #232B38;
-              border-radius: 12px;
-              padding: 40px 32px;
+              background: #ffffff;
+              border-radius: 16px;
+              padding: 40px 36px;
+              box-shadow: 0 4px 24px rgba(0,0,0,0.06);
             }
             .header {
-              border-bottom: 2px solid #4A9EFF;
+              border-bottom: 3px solid #4A9EFF;
               padding-bottom: 20px;
-              margin-bottom: 24px;
+              margin-bottom: 28px;
             }
             .header h1 {
-              font-family: 'Space Grotesk', sans-serif;
-              font-size: 28px;
-              font-weight: 600;
-              color: #4A9EFF;
+              font-size: 24px;
+              font-weight: 700;
+              color: #1a1a2e;
               margin: 0 0 4px 0;
               letter-spacing: -0.02em;
             }
             .header .subtitle {
-              color: #7C8B9E;
+              color: #6b7280;
               font-size: 14px;
               margin: 0;
             }
             .badge {
               display: inline-block;
               background: #4A9EFF;
-              color: #0B0E14;
-              padding: 4px 16px;
+              color: #ffffff;
+              padding: 2px 14px;
               border-radius: 20px;
               font-weight: 600;
-              font-size: 12px;
-              font-family: monospace;
-              margin-top: 8px;
+              font-size: 11px;
+              letter-spacing: 0.04em;
+              margin-top: 6px;
             }
             .section {
               margin: 24px 0;
             }
             .section-title {
-              font-family: 'Space Grotesk', sans-serif;
-              font-size: 14px;
+              font-size: 13px;
               font-weight: 600;
-              color: #4A9EFF;
+              color: #6b7280;
               text-transform: uppercase;
-              letter-spacing: 0.08em;
-              margin-bottom: 8px;
+              letter-spacing: 0.06em;
+              margin-bottom: 10px;
             }
             .info-box {
-              background: #0B0E14;
-              border: 1px solid #232B38;
+              background: #f3f4f6;
               border-radius: 8px;
-              padding: 16px 20px;
+              padding: 14px 18px;
               margin: 4px 0;
             }
             .info-box .label {
-              color: #7C8B9E;
+              color: #6b7280;
               font-size: 12px;
-              font-family: monospace;
+              font-weight: 500;
               display: block;
               margin-bottom: 2px;
             }
             .info-box .value {
-              color: #E8ECF1;
               font-size: 16px;
               font-weight: 500;
+              color: #1a1a2e;
             }
             .value.highlight {
               color: #4A9EFF;
             }
             .divider {
               border: none;
-              border-top: 1px dashed #232B38;
-              margin: 24px 0;
+              border-top: 1px solid #e5e7eb;
+              margin: 28px 0;
             }
             .footer {
               margin-top: 32px;
-              padding-top: 24px;
-              border-top: 1px solid #232B38;
+              padding-top: 20px;
+              border-top: 1px solid #e5e7eb;
               text-align: center;
             }
             .footer p {
-              color: #7C8B9E;
+              color: #6b7280;
               font-size: 13px;
               margin: 4px 0;
             }
@@ -1793,55 +1791,57 @@
               color: #4A9EFF;
               font-weight: 600;
             }
-            .footer .emoji {
-              font-size: 18px;
-            }
             .footer .timestamp {
-              font-family: monospace;
               font-size: 12px;
-              color: #7C8B9E;
-              opacity: 0.6;
+              color: #9ca3af;
             }
             .btn {
               display: inline-block;
               background: #4A9EFF;
-              color: #0B0E14 !important;
-              padding: 10px 24px;
+              color: #ffffff !important;
+              padding: 10px 28px;
               border-radius: 8px;
               text-decoration: none;
               font-weight: 600;
               font-size: 14px;
-              margin-top: 12px;
+              margin-top: 8px;
+              border: none;
+              cursor: pointer;
             }
             .btn:hover {
-              background: #6bb0ff;
+              background: #3b82d6;
             }
-            .status-dot {
-              display: inline-block;
-              width: 10px;
-              height: 10px;
-              background: #4ADE80;
-              border-radius: 50%;
-              margin-right: 8px;
-              animation: pulse 2s ease-in-out infinite;
+            .brief-note {
+              background: #eff6ff;
+              border-left: 4px solid #4A9EFF;
+              padding: 14px 18px;
+              border-radius: 6px;
+              margin: 16px 0;
+              font-size: 14px;
+              color: #1e3a5f;
             }
-            @keyframes pulse {
-              0%, 100% { opacity: 1; }
-              50% { opacity: 0.4; }
+            .brief-note strong {
+              color: #1a1a2e;
             }
           </style>
         </head>
         <body>
           <div class="container">
             <div class="header">
-              <h1>📬 New Project Inquiry</h1>
-              <p class="subtitle">From your portfolio chatbot — <span class="badge">NEW</span></p>
+              <h1>📋 Project Brief</h1>
+              <p class="subtitle">Your inquiry has been received</p>
+              <span class="badge">NEW</span>
+            </div>
+            
+            <div class="brief-note">
+              <strong>Hi there! 👋</strong><br>
+              Thanks for reaching out. Here's a summary of your project request:
             </div>
             
             <div class="section">
-              <div class="section-title">📋 Project Details</div>
+              <div class="section-title">📌 Project Details</div>
               <div class="info-box">
-                <span class="label">Project Type</span>
+                <span class="label">Type</span>
                 <span class="value highlight">${escapeHtml(type)}</span>
               </div>
               <div class="info-box">
@@ -1851,26 +1851,29 @@
             </div>
             
             <div class="section">
-              <div class="section-title">👤 Client Information</div>
+              <div class="section-title">📧 Contact Information</div>
               <div class="info-box">
-                <span class="label">Email Address</span>
+                <span class="label">Email</span>
                 <span class="value highlight">${escapeHtml(email)}</span>
               </div>
             </div>
             
             <hr class="divider">
             
-            <div class="section" style="text-align: center;">
-              <a href="mailto:${escapeHtml(email)}?subject=Re: Your Project Inquiry" class="btn">
-                ✉️ Reply to Client
+            <div style="text-align: center; margin: 8px 0 4px;">
+              <p style="color: #6b7280; font-size: 14px; margin-bottom: 8px;">
+                Ready to discuss this project?
+              </p>
+              <a href="mailto:masinga.tumelo02@gmail.com?subject=Re: Project Inquiry - ${escapeHtml(type)}&body=Hi Tumelo,%0A%0AI'm interested in discussing the project I submitted:%0A%0AProject: ${escapeHtml(type)}%0ADescription: ${escapeHtml(description)}%0A%0APlease let me know when you're available to chat.%0A%0AThanks!" class="btn">
+                ✉️ Send This Brief
               </a>
             </div>
             
             <div class="footer">
-              <p><span class="emoji">⚡</span> <span class="name">Tumelo Masinga</span> — Application Development &amp; Project Management</p>
+              <p><strong class="name">Tumelo Masinga</strong> — Application Development &amp; Project Management</p>
               <p class="timestamp">📅 Submitted: ${new Date().toLocaleString()}</p>
-              <p style="margin-top: 12px; font-size: 12px; opacity: 0.5;">
-                This inquiry was submitted through your portfolio chatbot.
+              <p style="margin-top: 12px; font-size: 12px; color: #9ca3af;">
+                You'll receive a response within 24 hours.
               </p>
             </div>
           </div>
@@ -1878,10 +1881,7 @@
         </html>
       `;
       
-      // Encode the HTML body for the mailto link
       const body = encodeURIComponent(htmlBody);
-      
-      // Open the email client with the styled email
       window.open('mailto:masinga.tumelo02@gmail.com?subject=' + subject + '&body=' + body);
     }
 
