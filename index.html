@@ -25,7 +25,8 @@
     "sameAs": [
       "https://www.linkedin.com/in/tumelo-masinga-55b5b871",
       "https://github.com/MasingaTumelo",
-      "https://t.me/Tumelo2me"
+      "https://t.me/Tumelo2me",
+      "https://linktr.ee/Tumelomasinga"
     ],
     "email": "masinga.tumelo02@gmail.com",
     "hasCredential": [
@@ -701,18 +702,18 @@
       position: relative;
     }
 
-    /* ===== START A CONVERSATION SECTION ===== */
-    .conversation-cta {
+    /* ===== LINKTREE SECTION ===== */
+    .linktree-section {
       margin: 16px 0 8px;
       padding: 40px 32px;
       background: var(--bg-panel);
-      border: 1px solid var(--border);
+      border: 2px solid var(--blue);
       border-radius: 12px;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
-    .conversation-cta::before {
+    .linktree-section::before {
       content: '';
       position: absolute;
       top: -50%;
@@ -722,65 +723,126 @@
       background: radial-gradient(circle at 30% 30%, rgba(74, 158, 255, 0.03), transparent 60%);
       pointer-events: none;
     }
-    .conversation-cta .cta-icon {
-      font-size: 48px;
-      margin-bottom: 12px;
-      display: block;
-    }
-    .conversation-cta h3 {
-      font-family: var(--font-display);
-      font-size: 1.8rem;
+    .linktree-section .brand-icon {
+      font-size: 64px;
       margin-bottom: 8px;
+      display: block;
+      line-height: 1;
+    }
+    .linktree-section h3 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      margin-bottom: 12px;
       position: relative;
     }
-    .conversation-cta p {
+    .linktree-section .brand-description {
       max-width: 100%;
       color: var(--steel);
-      margin-bottom: 6px;
       font-size: 1.05rem;
-      position: relative;
-    }
-    .conversation-cta .response-time {
-      color: var(--blue);
-      font-family: var(--font-mono);
-      font-size: 13px;
       margin-bottom: 24px;
-      display: block;
+      line-height: 1.7;
       position: relative;
     }
-    .conversation-cta .response-time::before {
-      content: '● ';
-      color: #4ADE80;
+    .linktree-section .brand-description strong {
+      color: var(--blue);
+    }
+    .linktree-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 500px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .linktree-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 20px;
+      color: var(--paper) !important;
+      text-decoration: none !important;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+    .linktree-item:hover {
+      border-color: var(--blue);
+      background: rgba(74, 158, 255, 0.05);
+      transform: translateX(6px);
+      text-decoration: none !important;
+    }
+    .linktree-item .link-icon {
+      font-size: 24px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .linktree-item .link-content {
+      flex: 1;
+      text-align: left;
+    }
+    .linktree-item .link-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--paper);
+    }
+    .linktree-item .link-sub {
+      font-size: 0.85rem;
+      color: var(--steel);
+      font-family: var(--font-body);
+    }
+    .linktree-item .link-arrow {
+      color: var(--steel);
+      font-size: 18px;
+      transition: transform 0.2s;
+    }
+    .linktree-item:hover .link-arrow {
+      transform: translateX(4px);
+      color: var(--blue);
+    }
+    .linktree-item .link-badge {
+      font-size: 10px;
+      background: var(--blue);
+      color: #0B0E14;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      margin-left: auto;
+    }
+    .linktree-item.featured {
+      border-color: var(--blue);
+      background: rgba(74, 158, 255, 0.08);
+    }
+    .linktree-item.featured:hover {
+      background: rgba(74, 158, 255, 0.15);
+      border-color: #6bb0ff;
+    }
+    .linktree-item .linktree-badge {
+      font-size: 10px;
+      background: var(--green);
+      color: #0B0E14;
+      padding: 2px 10px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-family: var(--font-mono);
+      margin-left: auto;
     }
 
     @media (max-width: 480px) {
-      .support-grid {
-        flex-direction: column;
-        align-items: center;
-      }
-      .support-card {
-        max-width: 100%;
-        width: 100%;
-      }
-      .support-cta {
+      .linktree-section {
         padding: 24px 16px;
       }
-      .support-cta h3 {
-        font-size: 1.4rem;
+      .linktree-section h3 {
+        font-size: 1.3rem;
       }
-      .conversation-cta {
-        padding: 24px 16px;
+      .linktree-item {
+        padding: 12px 16px;
       }
-      .conversation-cta h3 {
-        font-size: 1.4rem;
-      }
-      .cta-group {
-        flex-direction: column;
-        align-items: center;
-      }
-      .cta-btn {
-        width: 100%;
-        justify-content: center;
+      .linktree-item .link-title {
+        font-size: 0.9rem;
       }
     }
 
@@ -1074,7 +1136,7 @@
       <a href="#experience">Experience</a>
       <a href="#focus">Focus</a>
       <a href="#support">Support</a>
-      <a href="#contact">Contact</a>
+      <a href="#linktree">Links</a>
     </div>
     <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span><span></span><span></span>
@@ -1087,7 +1149,7 @@
     <a href="#experience">Experience</a>
     <a href="#focus">Focus</a>
     <a href="#support">Support</a>
-    <a href="#contact">Contact</a>
+    <a href="#linktree">Links</a>
   </div>
 </nav>
 
@@ -1119,11 +1181,8 @@
           </svg>
           LinkedIn
         </a>
-        <a href="#contact" class="profile-btn" style="border-color: var(--blue);" aria-label="Contact">
-          <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true" focusable="false">
-            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.708 2.825L15 11.105V5.383zm-.034 6.876-5.64-4.23-1.326.795a1 1 0 0 1-1.06 0l-1.325-.795-5.64 4.23A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741zM1 11.105l4.708-2.897L1 5.383v5.722z"/>
-          </svg>
-          Contact
+        <a href="#linktree" class="profile-btn" style="border-color: var(--blue);" aria-label="All Links">
+          🔗 All Links
         </a>
       </span>
     </div>
@@ -1246,32 +1305,90 @@
     </div>
   </section>
 
-  <!-- ===== START A CONVERSATION SECTION ===== -->
-  <section class="panel" id="contact" style="border-top: 2px solid var(--blue);">
-    <div class="panel-label">07 — Start a Conversation</div>
-    <div class="conversation-cta">
-      <span class="cta-icon">💬</span>
-      <h3>Start a Conversation</h3>
-      <p>Let's talk about your project — I'm here to help.</p>
-      <span class="response-time">I typically reply within a few hours.</span>
-      <div class="cta-group">
-        <a href="mailto:masinga.tumelo02@gmail.com" class="cta-btn">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/><path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/></svg>
-          Email Me
-        </a>
-        <a href="https://wa.me/Tumi_masinga" target="_blank" rel="noopener noreferrer" class="cta-btn cta-btn-outline">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          WhatsApp
-        </a>
-        <a href="https://t.me/Tumelo2me" target="_blank" rel="noopener noreferrer" class="cta-btn cta-btn-outline">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.69-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.38-.49 1.04-.75 4.07-1.77 6.78-2.94 8.14-3.51 3.87-1.61 4.68-1.89 5.2-1.9.11 0 .37.03.54.17.14.12.18.28.2.45-.02.07-.02.16-.04.29z"/>
-          </svg>
-          Telegram
-        </a>
+  <!-- ===== LINKTREE SECTION ===== -->
+  <section class="panel" id="linktree" style="border-top: 2px solid var(--blue);">
+    <div class="panel-label">07 — Connect With Me</div>
+    <div class="linktree-section">
+      <span class="brand-icon">⚡</span>
+      <h3>Tumelo Masinga</h3>
+      <div class="brand-description">
+        <strong>My own brand mark, which represents my path in software development.</strong> 
+        Visit my website to find out more about my transformation from project manager to aspiring IT project management professional.
       </div>
-      <div style="margin-top: 16px; font-family: var(--font-mono); font-size: 11px; color: var(--steel); opacity: 0.5;">
-        Tumelo Masinga · Application Development &amp; Project Management
+      
+      <div class="linktree-grid">
+        <!-- Featured: Linktree Profile -->
+        <a href="https://linktr.ee/Tumelomasinga" target="_blank" rel="noopener noreferrer" class="linktree-item featured">
+          <span class="link-icon">🔗</span>
+          <div class="link-content">
+            <div class="link-title">Visit my Linktree</div>
+            <div class="link-sub">All my links in one place — Facebook, Instagram, TikTok, WhatsApp &amp; more</div>
+          </div>
+          <span class="linktree-badge">✨ Featured</span>
+        </a>
+        
+        <a href="https://masingatumelo.github.io/Tumelo_Masinga/" target="_blank" rel="noopener noreferrer" class="linktree-item">
+          <span class="link-icon">🌐</span>
+          <div class="link-content">
+            <div class="link-title">Portfolio Website</div>
+            <div class="link-sub">My professional home base</div>
+          </div>
+          <span class="link-arrow">→</span>
+        </a>
+        
+        <a href="https://github.com/MasingaTumelo" target="_blank" rel="noopener noreferrer" class="linktree-item">
+          <span class="link-icon">🐙</span>
+          <div class="link-content">
+            <div class="link-title">GitHub</div>
+            <div class="link-sub">Code &amp; projects</div>
+          </div>
+          <span class="link-arrow">→</span>
+        </a>
+        
+        <a href="https://www.linkedin.com/in/tumelo-masinga-55b5b871" target="_blank" rel="noopener noreferrer" class="linktree-item">
+          <span class="link-icon">💼</span>
+          <div class="link-content">
+            <div class="link-title">LinkedIn</div>
+            <div class="link-sub">Professional network &amp; experience</div>
+          </div>
+          <span class="link-arrow">→</span>
+        </a>
+        
+        <a href="mailto:masinga.tumelo02@gmail.com" class="linktree-item">
+          <span class="link-icon">✉️</span>
+          <div class="link-content">
+            <div class="link-title">Email</div>
+            <div class="link-sub">masinga.tumelo02@gmail.com</div>
+          </div>
+          <span class="link-arrow">→</span>
+        </a>
+        
+        <a href="https://t.me/Tumelo2me" target="_blank" rel="noopener noreferrer" class="linktree-item">
+          <span class="link-icon">📱</span>
+          <div class="link-content">
+            <div class="link-title">Telegram</div>
+            <div class="link-sub">@Tumelo2me — Quick replies</div>
+          </div>
+          <span class="link-arrow">→</span>
+        </a>
+        
+        <a href="https://wa.me/Tumi_masinga" target="_blank" rel="noopener noreferrer" class="linktree-item">
+          <span class="link-icon">💬</span>
+          <div class="link-content">
+            <div class="link-title">WhatsApp</div>
+            <div class="link-sub">Let's have a conversation</div>
+          </div>
+          <span class="link-arrow">→</span>
+        </a>
+        
+        <a href="#support" class="linktree-item" style="border-color: var(--green);">
+          <span class="link-icon">🚀</span>
+          <div class="link-content">
+            <div class="link-title">Support My Work</div>
+            <div class="link-sub">Help me grow as a developer</div>
+          </div>
+          <span class="link-badge">❤️</span>
+        </a>
       </div>
     </div>
   </section>
@@ -1280,6 +1397,7 @@
   <footer>
     <div class="quote">"Always learning. Always building. Always optimizing."</div>
     <div class="footer-links">
+      <a href="https://linktr.ee/Tumelomasinga" target="_blank" rel="noopener noreferrer">Linktree</a>
       <a href="https://github.com/MasingaTumelo" target="_blank" rel="noopener noreferrer">GitHub</a>
       <a href="https://www.linkedin.com/in/tumelo-masinga-55b5b871" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a href="mailto:masinga.tumelo02@gmail.com">Email</a>
@@ -1545,7 +1663,7 @@
           • <a href="#capabilities" class="nav-link-btn" onclick="closeChatAndNavigate('capabilities')">📱 Mobile Dev Skills</a><br>
           • <a href="#academics" class="nav-link-btn" onclick="closeChatAndNavigate('academics')">🎓 My Training</a><br>
           • <a href="#support" class="nav-link-btn" onclick="closeChatAndNavigate('support')">🚀 Support My Work</a><br>
-          • <a href="#contact" class="nav-link-btn" onclick="closeChatAndNavigate('contact')">📧 Get in Touch</a>
+          • <a href="#linktree" class="nav-link-btn" onclick="closeChatAndNavigate('linktree')">🔗 All Links</a>
         `;
       } else if (projectType === 'Website') {
         links = `
@@ -1553,7 +1671,7 @@
           • <a href="#capabilities" class="nav-link-btn" onclick="closeChatAndNavigate('capabilities')">🌐 Web Dev Skills</a><br>
           • <a href="#experience" class="nav-link-btn" onclick="closeChatAndNavigate('experience')">💼 My Projects</a><br>
           • <a href="#support" class="nav-link-btn" onclick="closeChatAndNavigate('support')">🚀 Support My Work</a><br>
-          • <a href="#contact" class="nav-link-btn" onclick="closeChatAndNavigate('contact')">📧 Get in Touch</a>
+          • <a href="#linktree" class="nav-link-btn" onclick="closeChatAndNavigate('linktree')">🔗 All Links</a>
         `;
       }
       
