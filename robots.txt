@@ -5,14 +5,14 @@ Allow: /
 # Sitemap location
 Sitemap: https://tumelomasinga.tech/sitemap.xml
 
-# Allow favicon files
-Allow: /favicon.ico
-Allow: /favicon.svg
-Allow: /favicon-96x96.png
-Allow: /apple-touch-icon.png
-Allow: /web-app-manifest-192x192.png
-Allow: /web-app-manifest-512x512.png
-Allow: /site.webmanifest
+# Allow favicon files (in the favicon folder)
+Allow: /favicon/favicon.ico
+Allow: /favicon/favicon.svg
+Allow: /favicon/favicon-96x96.png
+Allow: /favicon/apple-touch-icon.png
+Allow: /favicon/web-app-manifest-192x192.png
+Allow: /favicon/web-app-manifest-512x512.png
+Allow: /favicon/site.webmanifest
 
 # Disallow sensitive directories (if any)
 Disallow: /assets/private/
