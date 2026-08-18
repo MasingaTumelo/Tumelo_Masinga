@@ -939,7 +939,7 @@
       margin-top: 16px;
     }
 
-    /* ===== ASSISTANT CHATBOT STYLES (DARK THEME FIXED) ===== */
+    /* ===== ASSISTANT CHATBOT STYLES ===== */
     .assistant-launcher {
       position: fixed;
       right: 24px;
@@ -1104,34 +1104,7 @@
       text-decoration: none;
     }
 
-    .assistant-suggestions {
-      display: flex;
-      gap: 7px;
-      overflow-x: auto;
-      padding: 0 16px 12px;
-      background: var(--bg);
-      scrollbar-width: none;
-    }
-    .assistant-suggestions::-webkit-scrollbar {
-      display: none;
-    }
-    .assistant-suggestions button {
-      flex: 0 0 auto;
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      padding: 7px 9px;
-      color: var(--steel);
-      background: transparent;
-      font: 400 10px var(--font-mono);
-      cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-    .assistant-suggestions button:hover {
-      border-color: var(--blue);
-      color: var(--blue);
-      background: rgba(74, 158, 255, 0.05);
-    }
+    /* REMOVED .assistant-suggestions styles */
 
     .assistant-input {
       display: flex;
@@ -1182,6 +1155,25 @@
       font: 400 9px var(--font-mono);
       opacity: 0.5;
       text-align: center;
+    }
+    /* Start Over Button */
+    .assistant-reset {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--steel);
+      padding: 4px 10px;
+      font: 400 10px var(--font-mono);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .assistant-reset:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      background: rgba(74, 158, 255, 0.05);
     }
 
     @media (max-width: 680px) {
@@ -1496,7 +1488,7 @@
 
 </div> <!-- .wrap -->
 
-<!-- ===== NEW ASSISTANT CHATBOT WIDGET ===== -->
+<!-- ===== ASSISTANT CHATBOT WIDGET (SMARTER) ===== -->
 <button class="assistant-launcher" id="assistantToggle" aria-label="Open assistant">
   <span>💬</span> <span>Ask me anything</span>
 </button>
@@ -1510,22 +1502,20 @@
         <span>Portfolio Assistant</span>
       </div>
     </div>
-    <button class="assistant-close" id="assistantClose" aria-label="Close assistant">✕</button>
+    <div class="assistant-header-actions">
+      <button class="assistant-reset" id="assistantReset" aria-label="Start Over">↺ Start Over</button>
+      <button class="assistant-close" id="assistantClose" aria-label="Close assistant">✕</button>
+    </div>
   </div>
   <div class="assistant-messages" id="assistantMessages">
     <div class="assistant-message assistant">
-      <p>👋 Hi! I'm Tumelo's portfolio assistant. What can I help you with?</p>
+      <p>👋 Hi! I'm Tumelo's portfolio assistant. I'm here to help you learn about his work, skills, and experience. What would you like to know?</p>
       <div class="assistant-actions">
         <a href="#capabilities">View skills</a>
         <a href="#support">Support</a>
         <a href="#linktree">All links</a>
       </div>
     </div>
-  </div>
-  <div class="assistant-suggestions" id="assistantSuggestions">
-    <button data-suggestion="What skills do you have?">Skills</button>
-    <button data-suggestion="Tell me about your experience">Experience</button>
-    <button data-suggestion="How can I contact you?">Contact</button>
   </div>
   <div class="assistant-input">
     <input type="text" id="assistantInput" placeholder="Type your question…" />
@@ -1577,22 +1567,76 @@
       });
     };
 
-    // ===== ASSISTANT CHATBOT =====
+    // ===== ASSISTANT CHATBOT (SMARTER) =====
     const assistantToggle = document.getElementById('assistantToggle');
     const assistantPanel = document.getElementById('assistantPanel');
     const assistantClose = document.getElementById('assistantClose');
+    const assistantReset = document.getElementById('assistantReset');
     const assistantInput = document.getElementById('assistantInput');
     const assistantSend = document.getElementById('assistantSend');
     const assistantMessages = document.getElementById('assistantMessages');
+
+    // ===== PORTFOLIO KNOWLEDGE BASE =====
+    const portfolioInfo = {
+      name: "Tumelo Masinga",
+      title: "Application Development Specialist & Project Manager",
+      location: "Johannesburg, South Africa",
+      email: "masinga.tumelo02@gmail.com",
+      credentials: [
+        "Higher Certificate in Mobile Application & Web Development from IIE MSA (Completed with Distinction)",
+        "Bachelor of Computer and Information Science in Application Development at Emeris (In Progress, 2025-2029)"
+      ],
+      skills: [
+        "Full-stack web development (JavaScript, Node.js, HTML, CSS)",
+        "Mobile app development (Android, Kotlin)",
+        "System programming (C, Java)",
+        "Cloud architecture (AWS, Azure, Docker)",
+        "Workflow automation (Google Apps Script)",
+        "Version control (Git, GitHub)",
+        "Project management (Agile, Waterfall)",
+        "UI/UX design"
+      ],
+      experience: "Project Manager at Labohlano Trading 66 (Pty) Ltd, overseeing end-to-end execution and physical implementation of funded initiatives, ensuring all deployments meet compliance benchmarks, timelines, and operational targets.",
+      focus: "Building secure command-and-control software pipelines for industrial networks, autonomous logistics, and future drone fleet infrastructure.",
+      social: {
+        linkedin: "https://www.linkedin.com/in/tumelo-masinga-55b5b871",
+        github: "https://github.com/MasingaTumelo",
+        telegram: "https://t.me/Tumelo2me",
+        linktree: "https://linktr.ee/Tumelomasinga"
+      }
+    };
 
     function toggleAssistant() {
       const isOpen = assistantPanel.classList.contains('open');
       assistantPanel.classList.toggle('open');
       assistantToggle.classList.toggle('is-open');
+      // Reset input placeholder when opening
+      if (!isOpen) {
+        assistantInput.placeholder = "Type your question…";
+      }
     }
 
     assistantToggle.addEventListener('click', toggleAssistant);
     assistantClose.addEventListener('click', toggleAssistant);
+
+    // ===== START OVER FUNCTION =====
+    function resetAssistant() {
+      assistantMessages.innerHTML = '';
+      const div = document.createElement('div');
+      div.className = 'assistant-message assistant';
+      div.innerHTML = `<p>👋 Hi! I'm Tumelo's portfolio assistant. I'm here to help you learn about his work, skills, and experience. What would you like to know?</p>
+        <div class="assistant-actions">
+          <a href="#capabilities">View skills</a>
+          <a href="#support">Support</a>
+          <a href="#linktree">All links</a>
+        </div>`;
+      assistantMessages.appendChild(div);
+      assistantInput.value = '';
+      assistantInput.placeholder = "Type your question…";
+      assistantMessages.scrollTop = assistantMessages.scrollHeight;
+    }
+
+    assistantReset.addEventListener('click', resetAssistant);
 
     function addAssistantMessage(text, isUser = false) {
       const div = document.createElement('div');
@@ -1602,41 +1646,88 @@
       assistantMessages.scrollTop = assistantMessages.scrollHeight;
     }
 
+    function getResponse(query) {
+      const lower = query.toLowerCase();
+      
+      // SKILLS
+      if (lower.includes('skill') || lower.includes('can you do') || lower.includes('technologies') || lower.includes('tech stack') || lower.includes('know') || lower.includes('expertise') || lower.includes('good at') || lower.includes('specialize') || lower.includes('proficient')) {
+        return `Tumelo is a versatile developer with expertise across multiple areas:\n\n• Full-stack web development (JavaScript, Node.js, HTML, CSS)\n• Mobile app development (Android, Kotlin)\n• System programming (C, Java)\n• Cloud architecture (AWS, Azure, Docker)\n• Workflow automation (Google Apps Script)\n• Version control (Git, GitHub)\n• Project management (Agile, Waterfall)\n• UI/UX design\n\nHe combines technical depth with project management skills to deliver complete solutions.`;
+      }
+      
+      // EXPERIENCE / PROJECTS / WORK
+      if (lower.includes('experience') || lower.includes('work') || lower.includes('projects') || lower.includes('job') || lower.includes('career') || lower.includes('done') || lower.includes('did') || lower.includes('employed') || lower.includes('role') || lower.includes('position')) {
+        return `Tumelo is currently a Project Manager at Labohlano Trading 66 (Pty) Ltd. In this role, he:\n\n• Oversees end-to-end execution of funded initiatives\n• Ensures all deployments meet compliance benchmarks, timelines, and operational targets\n• Applies algorithmic logic and structured systems analysis\n• Optimizes workflows, manages assets, and scales business capacity\n\nHe bridges the gap between technical execution and strategic project leadership.`;
+      }
+      
+      // QUALIFICATIONS / EDUCATION / STUDIES
+      if (lower.includes('qualification') || lower.includes('certificate') || lower.includes('degree') || lower.includes('study') || lower.includes('education') || lower.includes('learn') || lower.includes('school') || lower.includes('college') || lower.includes('university') || lower.includes('studied') || lower.includes('training') || lower.includes('course')) {
+        return `Tumelo's academic journey:\n\n🎓 Higher Certificate in Mobile Application & Web Development\n   • IIE MSA — Completed with Distinction\n   • Focus: JavaScript, C, Kotlin, Android, Web Design\n\n📚 Bachelor of Computer and Information Science\n   • Emeris — In Progress (2025-2029)\n   • Specializing in Application Development\n   • Expanding: C++, Java, Python, Azure, Docker, Networking, Security, SQL, Agile\n\nHe is continuously expanding his knowledge in programming, cloud technologies, and project management.`;
+      }
+      
+      // QUALIFIED / LEGIT / TRUST / HIRE
+      if (lower.includes('qualified') || lower.includes('legit') || lower.includes('trust') || lower.includes('reliable') || lower.includes('good') || lower.includes('capable') || lower.includes('worth') || lower.includes('hire') || lower.includes('recommend') || lower.includes('should i')) {
+        return `Yes, Tumelo is highly qualified! He holds:\n\n✅ Higher Certificate with Distinction\n✅ Actively completing his B.Sc in Application Development\n✅ Real-world project management experience\n✅ Technical skills across multiple programming languages\n✅ Cloud expertise (AWS, Azure, Docker)\n\nHe combines academic excellence with practical experience to deliver quality results.`;
+      }
+      
+      // CONTACT / REACH / EMAIL / PHONE
+      if (lower.includes('contact') || lower.includes('email') || lower.includes('reach') || lower.includes('phone') || lower.includes('call') || lower.includes('message') || lower.includes('get in touch') || lower.includes('connect') || lower.includes('social')) {
+        return `You can reach Tumelo through these channels:\n\n📧 Email: ${portfolioInfo.email}\n💼 LinkedIn: ${portfolioInfo.social.linkedin}\n🔗 All links: ${portfolioInfo.social.linktree}\n\nHe typically replies within a few hours and is always open to new opportunities and collaborations!`;
+      }
+      
+      // LOCATION / BASED / WHERE / CITY / COUNTRY / LIVE
+      if (lower.includes('location') || lower.includes('based') || lower.includes('where') || lower.includes('city') || lower.includes('country') || lower.includes('live') || lower.includes('from') || lower.includes('resides') || lower.includes('home')) {
+        return `📍 Tumelo is based in ${portfolioInfo.location}.\n\nHe is available for projects worldwide and works remotely with clients across different time zones. 🌍`;
+      }
+      
+      // FOCUS / FUTURE / GOALS / VISION
+      if (lower.includes('focus') || lower.includes('future') || lower.includes('goal') || lower.includes('aim') || lower.includes('plan') || lower.includes('vision') || lower.includes('looking for') || lower.includes('want to') || lower.includes('aspire') || lower.includes('target')) {
+        return `🚀 Tumelo's strategic focus is on:\n\n• Building secure command-and-control software pipelines for industrial networks\n• Autonomous logistics systems\n• Future drone fleet infrastructure\n\nHe is building the foundational groundwork to design and oversee secure, scalable systems that will power the next generation of industrial automation.`;
+      }
+      
+      // NAME / WHO / ABOUT / INTRO
+      if (lower.includes('name') || lower.includes('who are you') || lower.includes('who is') || lower.includes('about') || lower.includes('tell me') || lower.includes('introduce') || lower.includes('background')) {
+        return `👋 I'm Tumelo Masinga — ${portfolioInfo.title}.\n\n📍 Based in ${portfolioInfo.location}\n💼 Helping businesses build scalable, secure software solutions\n🎓 Currently pursuing my B.Sc in Application Development\n\nI bridge the gap between technical execution and strategic leadership.`;
+      }
+      
+      // HELP / PURPOSE / WHAT CAN YOU DO
+      if (lower.includes('help') || lower.includes('what can you do') || lower.includes('assist') || lower.includes('purpose') || lower.includes('function') || lower.includes('offer')) {
+        return `I can help you learn about:\n\n🔹 Tumelo's skills and expertise\n🔹 His professional experience\n🔹 His qualifications and education\n🔹 How to contact him\n🔹 His location and availability\n🔹 His future goals and focus areas\n\nWhat would you like to know? 😊`;
+      }
+      
+      // PRICE / COST / RATE / MONEY / CHARGE / FEE
+      if (lower.includes('price') || lower.includes('cost') || lower.includes('rate') || lower.includes('money') || lower.includes('charge') || lower.includes('fee') || lower.includes('budget') || lower.includes('expensive') || lower.includes('afford')) {
+        return `💼 For pricing and project inquiries, I recommend reaching out directly to Tumelo via email at ${portfolioInfo.email} or through his LinkedIn profile. He provides custom quotes based on project requirements and scope.`;
+      }
+      
+      // TIME / AVAILABILITY / SCHEDULE / HOURS
+      if (lower.includes('time') || lower.includes('available') || lower.includes('schedule') || lower.includes('when') || lower.includes('hours') || lower.includes('deadline') || lower.includes('timeline') || lower.includes('duration')) {
+        return `⏰ Tumelo is available for projects worldwide and typically replies to messages within a few hours. He is flexible with scheduling and can accommodate different time zones. Reach out via email or LinkedIn to discuss availability!`;
+      }
+      
+      // TECH / PROGRAMMING / LANGUAGES / CODE / DEVELOP / BUILD
+      if (lower.includes('tech') || lower.includes('programming') || lower.includes('languages') || lower.includes('code') || lower.includes('develop') || lower.includes('build') || lower.includes('software') || lower.includes('stack') || lower.includes('tools') || lower.includes('framework')) {
+        return `💻 Tumelo works with a wide range of technologies:\n\n• Languages: JavaScript, Java, Kotlin, C, Python (learning)\n• Frameworks: Node.js, Android SDK\n• Cloud: AWS, Azure, Docker\n• Tools: Git, GitHub, Google Apps Script\n• Methodologies: Agile, Waterfall, Project Management\n\nHe is always learning and expanding his tech stack!`;
+      }
+      
+      // ===== NEUTRAL FALLBACK (for ANY question not understood) =====
+      return `That's a great question! While I don't have specific information about that, I can tell you about Tumelo Masinga:\n\n👤 Application Development Specialist & Project Manager\n📍 Based in Johannesburg, South Africa\n💻 Specializes in full-stack development, mobile apps, cloud architecture, and project management\n🎓 Holds a Higher Certificate with Distinction and is completing his B.Sc\n\nFeel free to ask me about:\n• His skills and expertise\n• His professional experience\n• His qualifications and education\n• How to contact him\n• His location and availability\n\nI'm here to help! 😊`;
+    }
+
     function handleAssistantSend() {
       const text = assistantInput.value.trim();
       if (!text) return;
       addAssistantMessage(text, true);
       assistantInput.value = '';
+      
       setTimeout(() => {
-        const responses = {
-          'skills': 'I specialize in full-stack web development, mobile apps (Android/Kotlin), system programming (C/Java), and cloud architecture (AWS/Azure/Docker). I also have experience with project management and automation.',
-          'experience': 'I currently work as a Project Manager at Labohlano Trading, overseeing funded initiatives and technical deployments. I also have a Higher Certificate in Mobile & Web Development and am pursuing my B.Sc in Application Development.',
-          'contact': 'You can reach me at masinga.tumelo02@gmail.com, connect on LinkedIn, or check out my Linktree for all my social links. I typically reply within a few hours!'
-        };
-        let reply = 'Thanks for your message! I\'ll help as best I can. You can explore my skills, experience, or contact me directly.';
-        const lower = text.toLowerCase();
-        if (lower.includes('skill') || lower.includes('can you do')) {
-          reply = responses.skills;
-        } else if (lower.includes('experience') || lower.includes('work')) {
-          reply = responses.experience;
-        } else if (lower.includes('contact') || lower.includes('email') || lower.includes('reach')) {
-          reply = responses.contact;
-        }
+        const reply = getResponse(text);
         addAssistantMessage(reply);
-      }, 800);
+      }, 600);
     }
 
     assistantSend.addEventListener('click', handleAssistantSend);
     assistantInput.addEventListener('keydown', function(e) {
       if (e.key === 'Enter') handleAssistantSend();
-    });
-
-    // Suggestion buttons
-    document.querySelectorAll('.assistant-suggestions button').forEach(btn => {
-      btn.addEventListener('click', function() {
-        assistantInput.value = this.dataset.suggestion;
-        handleAssistantSend();
-      });
     });
 
     // Close assistant when clicking outside
