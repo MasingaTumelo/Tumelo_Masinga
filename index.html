@@ -328,6 +328,7 @@
       html{scroll-behavior:auto;}
       .chat-message{animation:none;}
       .trace svg line{animation:none;}
+      .anim-hero{opacity:1 !important; transform:none !important;}
     }
 
     h1{
@@ -1104,8 +1105,6 @@
       text-decoration: none;
     }
 
-    /* REMOVED .assistant-suggestions styles */
-
     .assistant-input {
       display: flex;
       gap: 8px;
@@ -1156,7 +1155,6 @@
       opacity: 0.5;
       text-align: center;
     }
-    /* Start Over Button */
     .assistant-reset {
       display: inline-flex;
       align-items: center;
@@ -1214,6 +1212,34 @@
       transform: scale(0.92);
     }
 
+    /* ===== INTERACTIVE HOVER STATES ===== */
+    .cap-cell,
+    .tag-cloud span,
+    .support-card,
+    .linktree-item,
+    .profile-btn,
+    .nav-links a,
+    .footer-links a {
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .cap-cell:hover {
+      background: rgba(74, 158, 255, 0.03);
+      transform: translateY(-4px);
+    }
+
+    .tag-cloud span:hover {
+      transform: translateY(-2px);
+    }
+
+    .linktree-item:hover {
+      transform: translateX(6px);
+    }
+
+    .support-card:hover {
+      transform: translateY(-4px);
+    }
+
     @media (max-width: 680px) {
       .assistant-launcher { right: 16px; bottom: 16px; min-height: 44px; padding: 0 14px; font-size: 10px; }
       .assistant-panel { right: 16px; bottom: 74px; max-height: calc(100dvh - 90px); width: calc(100vw - 32px); }
@@ -1231,7 +1257,6 @@
 <a href="#arc" class="skip-link">Skip to content</a>
 
 <div class="grid-bg"></div>
-
 
 <div class="trace">
   <svg viewBox="0 0 2 100" preserveAspectRatio="none">
@@ -1274,15 +1299,15 @@
 <div class="wrap">
 
   <header>
-    <div class="eyebrow">Johannesburg, South Africa — Available worldwide</div>
-    <h1>Tumelo Masinga</h1>
-    <div class="role">Application Development Specialist &amp; Project Manager</div>
+    <div class="eyebrow anim-hero">Johannesburg, South Africa — Available worldwide</div>
+    <h1 class="anim-hero">Tumelo Masinga</h1>
+    <div class="role anim-hero">Application Development Specialist &amp; Project Manager</div>
     
-    <p class="lede" style="margin-bottom: 32px;">
+    <p class="lede anim-hero" style="margin-bottom: 32px;">
       Bridging low-level technical execution with high-level project leadership — building scalable, secure command-and-control software pipelines for real-world enterprise systems.
     </p>
     
-    <div class="meta-row">
+    <div class="meta-row anim-hero">
       <span>◇ Higher Certificate in Mobile Application &amp; Web Development, Complete</span>
       <span>◇ B.Sc Application Development, in progress</span>
       <span>◇ Project Manager, Labohlano Trading</span>
@@ -1307,19 +1332,19 @@
   </header>
 
   <!-- ===== SECTIONS ===== -->
-  <section class="panel" id="arc">
-    <div class="panel-label">01 — Trajectory</div>
-    <h2>The Strategic Arc</h2>
-    <p>As an Application Development student and aspiring Technical Program Manager, I work at the intersection of complex software architecture and enterprise-scale project execution. Most programmers optimise syntax, while most managers optimise timelines. I bridge both worlds because the logic necessary to conduct a physical deployment and the infrastructure that supports a cloud service are the same engineering challenge at different scales.</p>
-    <p>My core focus as a Project Manager is ensuring that funded initiatives are executed flawlessly, resources are optimized, and every technical target is met with precision. By combining this real-world implementation experience with systems programming (C, Java, Cloud Architecture), I am building the foundational groundwork to design and oversee secure, intelligent command-and-control ecosystems that power critical enterprise infrastructure across multiple industries—including autonomous logistics, drone fleet coordination, industrial automation, energy grids, smart cities, and beyond.</p>
+  <section class="panel anim-section" id="arc">
+    <div class="panel-label anim-hero">01 — Trajectory</div>
+    <h2 class="anim-hero">The Strategic Arc</h2>
+    <p class="anim-hero">As an Application Development student, I work at the intersection of two fields that rarely share a desk: complex software architecture and extensive project execution. Most programmers optimise syntax, while most managers optimise timelines. I bridge both worlds because the logic necessary to conduct a physical deployment and the infrastructure that supports a cloud service are the same engineering challenge at different scales.</p>
+    <p class="anim-hero">My core focus as a Project Manager is ensuring that funded initiatives are executed flawlessly, resources are optimized, and every technical target is met with precision. By combining this real-world implementation experience with systems programming (C, Java, Cloud Architecture), I am building the foundational groundwork to design and oversee secure command-and-control pipelines for industrial networks, autonomous logistics, and future drone fleet infrastructure.</p>
   </section>
 
-  <section class="panel" id="capabilities">
-    <div class="panel-label">02 — Capabilities</div>
-    <h2>Core Engineering Capabilities</h2>
-    <p class="lede">Developing, deploying, and managing responsive software systems and digital workflows.</p>
+  <section class="panel anim-section" id="capabilities">
+    <div class="panel-label anim-hero">02 — Capabilities</div>
+    <h2 class="anim-hero">Core Engineering Capabilities</h2>
+    <p class="lede anim-hero">Developing, deploying, and managing responsive software systems and digital workflows.</p>
 
-    <div class="cap-grid">
+    <div class="cap-grid anim-stagger">
       <div class="cap-cell"><h3>Design &amp; User Experience</h3><p>UI/UX layout prototyping and accessibility compliance.</p><div class="stack"><span>UI/UX Design</span><span>Writing</span><span>Web Design</span></div></div>
       <div class="cap-cell"><h3>Mobile &amp; Native Ecosystems</h3><p>Android development built for real device constraints.</p><div class="stack"><span>Kotlin</span><span>Android Development</span><span>Mobile Applications</span></div></div>
       <div class="cap-cell"><h3>Full-Stack Web Engineering</h3><p>Interactive web applications and responsive interfaces.</p><div class="stack"><span>JavaScript</span><span>Node.js</span><span>jQuery</span><span>Web Development</span><span>HTML</span><span>CSS</span></div></div>
@@ -1329,10 +1354,10 @@
     </div>
   </section>
 
-  <section class="panel" id="academics">
-    <div class="panel-label">03 — Academic Foundation</div>
-    <h2>Curriculum &amp; Technical Roadmap</h2>
-    <div class="credential">
+  <section class="panel anim-section" id="academics">
+    <div class="panel-label anim-hero">03 — Academic Foundation</div>
+    <h2 class="anim-hero">Curriculum &amp; Technical Roadmap</h2>
+    <div class="credential anim-hero">
       <div class="school">Emeris — In Progress</div>
       <h3>Bachelor of Computer and Information Science <span class="status"> In Progress </span></h3>
       <p>Specializing in Application Development.</p>
@@ -1342,7 +1367,7 @@
         <div class="stage"><div class="stage-year">Y3</div><div><h3>Advanced Architecture</h3><p>Programming 3A, 3B, 3C &amp; 3D · Information Systems 3A, 3D &amp; 3E · Introduction to Research for ICT</p></div></div>
       </div>
     </div>
-    <div class="credential">
+    <div class="credential anim-hero">
       <div class="school">IIE MSA — Completed</div>
       <h3>Higher Certificate in Mobile Application &amp; Web Development <span class="status" style="color:var(--blue); border-color:var(--blue-dim);">Complete</span></h3>
       <p>Focused on front-end architectures, mobile application lifecycles, and interface accessibility.</p>
@@ -1353,10 +1378,10 @@
     </div>
   </section>
 
-  <section class="panel" id="experience">
-    <div class="panel-label">04 — Professional Experience</div>
-    <h2>Leadership &amp; Enterprise Experience</h2>
-    <div class="role-card">
+  <section class="panel anim-section" id="experience">
+    <div class="panel-label anim-hero">04 — Professional Experience</div>
+    <h2 class="anim-hero">Leadership &amp; Enterprise Experience</h2>
+    <div class="role-card anim-hero">
       <div class="role-title">Project Manager</div>
       <div class="role-org">Labohlano Trading 66 (Pty) Ltd</div>
       <p style="margin-top: 12px; margin-bottom: 10px;">Oversee the end-to-end execution and physical implementation of funded initiatives, ensuring all deployments meet precise compliance benchmarks, timelines, and operational targets.</p>
@@ -1364,11 +1389,11 @@
     </div>
   </section>
 
-  <section class="panel" id="focus">
-    <div class="panel-label">05 — Emerging Focus</div>
-    <h2>Architecture &amp; Emerging Tech</h2>
-    <p class="lede">Languages, logic, and the architectural interests shaping where this trajectory is headed next.</p>
-    <div class="tag-cloud">
+  <section class="panel anim-section" id="focus">
+    <div class="panel-label anim-hero">05 — Emerging Focus</div>
+    <h2 class="anim-hero">Architecture &amp; Emerging Tech</h2>
+    <p class="lede anim-hero">Languages, logic, and the architectural interests shaping where this trajectory is headed next.</p>
+    <div class="tag-cloud anim-stagger">
       <span>Java</span><span>Kotlin</span><span>C</span><span>JavaScript</span><span>Pseudocode</span>
       <span>Logic Gates &amp; Discrete Structures</span><span>Microservices</span>
       <span>AWS</span><span>Azure</span><span>Data Pipelines</span><span>Network Topologies</span>
@@ -1376,9 +1401,9 @@
   </section>
 
   <!-- ===== SUPPORT MY WORK SECTION ===== -->
-  <section class="panel" id="support" style="border-top: 2px solid var(--green);">
-    <div class="panel-label">06 — Support My Work</div>
-    <div class="support-cta">
+  <section class="panel anim-section" id="support" style="border-top: 2px solid var(--green);">
+    <div class="panel-label anim-hero">06 — Support My Work</div>
+    <div class="support-cta anim-hero">
       <span class="cta-icon">🚀</span>
       <h3>Support My Work</h3>
       <span class="student-badge">🎓 Student Developer</span>
@@ -1386,7 +1411,7 @@
       <p style="font-size: 0.95rem; color: var(--steel); margin-top: 4px;">Your support helps me afford the tools, resources, and certifications I need to grow.</p>
       <span class="response-time">Every contribution, big or small, makes a difference</span>
       
-      <div class="support-grid">
+      <div class="support-grid anim-stagger">
         <!-- Bitcoin -->
         <div class="support-card">
           <span class="coin">₿</span>
@@ -1417,16 +1442,16 @@
         </div>
       </div>
       
-      <div class="support-note">
+      <div class="support-note anim-hero">
         💡 All addresses are verified. Contact me if you need help with any transaction.
       </div>
     </div>
   </section>
 
   <!-- ===== LINKTREE SECTION ===== -->
-  <section class="panel" id="linktree" style="border-top: 2px solid var(--blue);">
-    <div class="panel-label">07 — Connect With Me</div>
-    <div class="linktree-section">
+  <section class="panel anim-section" id="linktree" style="border-top: 2px solid var(--blue);">
+    <div class="panel-label anim-hero">07 — Connect With Me</div>
+    <div class="linktree-section anim-hero">
       <span class="brand-icon">⚡</span>
       <h3>Tumelo Masinga</h3>
       <div class="brand-description">
@@ -1434,7 +1459,7 @@
         Visit my website to find out more about my transformation from project manager to aspiring IT project management professional.
       </div>
       
-      <div class="linktree-grid">
+      <div class="linktree-grid anim-stagger">
         <!-- Featured: Linktree Profile -->
         <a href="https://linktr.ee/Tumelomasinga" target="_blank" rel="noopener noreferrer" class="linktree-item featured">
           <span class="link-icon">🔗</span>
@@ -1566,6 +1591,9 @@
   </div>
   <p class="assistant-disclaimer">This assistant is powered by AI and may not be perfect.</p>
 </div>
+
+<!-- ===== MOTION ONE CDN ===== -->
+<script src="https://cdn.jsdelivr.net/npm/motion@10/dist/motion.min.js"></script>
 
 <!-- ===== SCRIPTS ===== -->
 <script>
@@ -1781,6 +1809,45 @@
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+
+    // ===== MOTION ONE ANIMATIONS (CONSISTENT & INTERACTIVE) =====
+    if (typeof Motion !== 'undefined') {
+      const { animate, stagger, inView } = Motion;
+
+      // 1. Hero entrance animation — runs on page load
+      animate('.anim-hero', 
+        { opacity: [0, 1], y: [24, 0] }, 
+        { duration: 0.8, delay: stagger(0.08), easing: 'ease-out' }
+      );
+
+      // 2. Section reveal — runs when each section comes into view
+      inView('.anim-section', (info) => {
+        animate(info.target, 
+          { opacity: [0, 1], y: [40, 0] }, 
+          { duration: 0.8, easing: 'ease-out' }
+        );
+      });
+
+      // 3. Staggered children — runs when grid/tag/link groups come into view
+      inView('.anim-stagger', (info) => {
+        animate(info.target.children, 
+          { opacity: [0, 1], y: [20, 0] }, 
+          { duration: 0.6, delay: stagger(0.08), easing: 'ease-out' }
+        );
+      });
+
+      // 4. Subtle pulse on eyebrow dot
+      animate('.eyebrow', 
+        { opacity: [0.4, 1, 0.4] }, 
+        { duration: 2.4, repeat: Infinity, easing: 'ease-in-out' }
+      );
+
+      // 5. Gentle floating animation for the trace line
+      animate('.trace svg line:nth-child(2)', 
+        { opacity: [0.5, 1, 0.5] }, 
+        { duration: 3, repeat: Infinity, easing: 'ease-in-out' }
+      );
+    }
   });
 </script>
 
