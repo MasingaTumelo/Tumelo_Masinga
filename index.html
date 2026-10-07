@@ -36,7 +36,6 @@
   <!-- Additional SEO Meta Tags -->
   <meta name="author" content="Tumelo Masinga" />
   <meta name="keywords" content="Tumelo Masinga, Application Development, Project Management, Software Development, Johannesburg, South Africa, Developer Portfolio" />
-  <meta name="theme-color" content="#0B0E14" />
   
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -107,6 +106,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <style>
+    /* ===== DARK THEME (DEFAULT) ===== */
     :root {
       --bg: #0B0E14;
       --bg-panel: #10141C;
@@ -122,6 +122,19 @@
       --font-mono: 'IBM Plex Mono', monospace;
     }
 
+    /* ===== LIGHT THEME ===== */
+    html[data-theme="light"] {
+      --bg: #F5F7FA;
+      --bg-panel: #FFFFFF;
+      --paper: #1A1F2E;
+      --blue: #1E6FD9;
+      --blue-dim: #A8C8F0;
+      --steel: #5A6478;
+      --border: #DDE3EC;
+      --amber: #D6873D;
+      --green: #22A559;
+    }
+
     *{margin:0;padding:0;box-sizing:border-box;}
     html{
       scroll-behavior:smooth;
@@ -134,6 +147,7 @@
       font-family:var(--font-body);
       line-height:1.6;
       overflow-x:hidden;
+      transition:background-color 0.3s ease, color 0.3s ease;
     }
 
     a{color:var(--blue);text-decoration:none;}
@@ -161,6 +175,10 @@
       z-index:0;
       mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
       -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
+      transition:opacity 0.3s ease;
+    }
+    html[data-theme="light"] .grid-bg{
+      opacity:0.5;
     }
 
     .wrap{
@@ -192,10 +210,17 @@
       position:sticky;
       top:0;
       z-index:50;
-      background:rgba(11,14,20,0.85);
+      background:var(--bg);
       backdrop-filter:blur(10px);
       -webkit-backdrop-filter:blur(10px);
       border-bottom:1px solid var(--border);
+      transition:background-color 0.3s ease, border-color 0.3s ease;
+    }
+    html:not([data-theme="light"]) .site-nav{
+      background:rgba(11,14,20,0.85);
+    }
+    html[data-theme="light"] .site-nav{
+      background:rgba(255,255,255,0.88);
     }
     .nav-inner{
       max-width:920px;
@@ -239,6 +264,47 @@
     .nav-links a:hover{
       color:var(--blue);
       text-decoration:none;
+    }
+
+    /* ===== THEME TOGGLE ===== */
+    .theme-toggle{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:36px;
+      height:36px;
+      border:1px solid var(--border);
+      border-radius:4px;
+      background:transparent;
+      color:var(--steel);
+      cursor:pointer;
+      font-size:16px;
+      transition:all 0.2s ease;
+      flex-shrink:0;
+    }
+    .theme-toggle:hover{
+      border-color:var(--blue);
+      color:var(--blue);
+      background:rgba(74, 158, 255, 0.05);
+    }
+    html[data-theme="light"] .theme-toggle:hover{
+      background:rgba(30, 111, 217, 0.08);
+    }
+    .theme-toggle .icon-sun{display:none;}
+    .theme-toggle .icon-moon{display:block;}
+    html[data-theme="light"] .theme-toggle .icon-sun{display:block;}
+    html[data-theme="light"] .theme-toggle .icon-moon{display:none;}
+
+    /* Mobile toggle placement */
+    .mobile-toggle-wrap{
+      display:none;
+    }
+    @media (max-width:720px){
+      .mobile-toggle-wrap{
+        display:inline-flex;
+        align-items:center;
+        gap:10px;
+      }
     }
 
     .hamburger{
@@ -292,6 +358,9 @@
     @media (max-width:720px){
       .nav-links{display:none;}
       .hamburger{display:flex;}
+      .nav-inner{
+        gap:10px;
+      }
     }
 
     header{
@@ -390,6 +459,9 @@
       border-color: var(--blue);
       background: rgba(74, 158, 255, 0.05);
       text-decoration: none;
+    }
+    html[data-theme="light"] .profile-btn:hover {
+      background: rgba(30, 111, 217, 0.06);
     }
     .profile-btn svg {
       width: 16px;
@@ -572,6 +644,9 @@
       color:var(--blue);
       background: rgba(74, 158, 255, 0.05);
     }
+    html[data-theme="light"] .tag-cloud span:hover{
+      background: rgba(30, 111, 217, 0.06);
+    }
 
     /* ===== SUPPORT MY WORK SECTION ===== */
     .support-cta {
@@ -715,7 +790,7 @@
       align-items: center;
       gap: 10px;
       background: var(--blue);
-      color: #0B0E14 !important;
+      color: #FFFFFF !important;
       font-family: var(--font-mono);
       font-size: 14px;
       font-weight: 600;
@@ -726,10 +801,16 @@
       cursor: pointer;
       text-decoration: none !important;
     }
+    html:not([data-theme="light"]) .cta-btn {
+      color: #0B0E14 !important;
+    }
     .cta-btn:hover {
       background: #6bb0ff;
       transform: scale(1.02);
       text-decoration: none !important;
+    }
+    html[data-theme="light"] .cta-btn:hover {
+      background: #1558b0;
     }
     .cta-btn-outline {
       background: transparent;
@@ -741,6 +822,9 @@
       background: rgba(74, 158, 255, 0.06);
       transform: scale(1.02);
       text-decoration: none !important;
+    }
+    html[data-theme="light"] .cta-btn-outline:hover {
+      background: rgba(30, 111, 217, 0.08);
     }
     .cta-btn svg {
       width: 20px;
@@ -827,6 +911,9 @@
       transform: translateX(6px);
       text-decoration: none !important;
     }
+    html[data-theme="light"] .linktree-item:hover {
+      background: rgba(30, 111, 217, 0.06);
+    }
     .linktree-item .link-icon {
       font-size: 24px;
       line-height: 1;
@@ -859,30 +946,42 @@
     .linktree-item .link-badge {
       font-size: 10px;
       background: var(--blue);
-      color: #0B0E14;
+      color: #FFFFFF;
       padding: 2px 10px;
       border-radius: 12px;
       font-weight: 600;
       font-family: var(--font-mono);
       margin-left: auto;
+    }
+    html:not([data-theme="light"]) .linktree-item .link-badge {
+      color: #0B0E14;
     }
     .linktree-item.featured {
       border-color: var(--blue);
       background: rgba(74, 158, 255, 0.08);
     }
+    html[data-theme="light"] .linktree-item.featured {
+      background: rgba(30, 111, 217, 0.08);
+    }
     .linktree-item.featured:hover {
       background: rgba(74, 158, 255, 0.15);
       border-color: #6bb0ff;
     }
+    html[data-theme="light"] .linktree-item.featured:hover {
+      background: rgba(30, 111, 217, 0.14);
+    }
     .linktree-item .linktree-badge {
       font-size: 10px;
       background: var(--green);
-      color: #0B0E14;
+      color: #FFFFFF;
       padding: 2px 10px;
       border-radius: 12px;
       font-weight: 600;
       font-family: var(--font-mono);
       margin-left: auto;
+    }
+    html:not([data-theme="light"]) .linktree-item .linktree-badge {
+      color: #0B0E14;
     }
 
     @media (max-width: 480px) {
@@ -968,6 +1067,9 @@
     .assistant-launcher.is-open {
       border-color: var(--blue);
       background: var(--blue);
+      color: #FFFFFF;
+    }
+    html:not([data-theme="light"]) .assistant-launcher.is-open {
       color: #0B0E14;
     }
 
@@ -1017,10 +1119,13 @@
       width: 30px;
       height: 30px;
       place-items: center;
-      color: #0B0E14;
+      color: #FFFFFF;
       background: var(--blue);
       border-radius: 6px 2px 6px 2px;
       font: 700 12px var(--font-mono);
+    }
+    html:not([data-theme="light"]) .assistant-icon {
+      color: #0B0E14;
     }
     .assistant-heading strong {
       font: 700 12px var(--font-mono);
@@ -1078,6 +1183,9 @@
       border-color: var(--blue);
       background: rgba(74, 158, 255, 0.1);
     }
+    html[data-theme="light"] .assistant-message.user {
+      background: rgba(30, 111, 217, 0.08);
+    }
     .assistant-message.assistant {
       align-self: flex-start;
       background: var(--bg-panel);
@@ -1103,6 +1211,9 @@
       border-color: var(--blue);
       background: rgba(74, 158, 255, 0.05);
       text-decoration: none;
+    }
+    html[data-theme="light"] .assistant-actions a:hover {
+      background: rgba(30, 111, 217, 0.08);
     }
 
     .assistant-input {
@@ -1137,14 +1248,20 @@
       place-items: center;
       border: 0;
       border-radius: 4px;
-      color: #0B0E14;
+      color: #FFFFFF;
       background: var(--blue);
       cursor: pointer;
       transition: background 0.2s;
       font-size: 18px;
     }
+    html:not([data-theme="light"]) .assistant-input button {
+      color: #0B0E14;
+    }
     .assistant-input button:hover {
       background: #6bb0ff;
+    }
+    html[data-theme="light"] .assistant-input button:hover {
+      background: #1558b0;
     }
     .assistant-disclaimer {
       margin: 0;
@@ -1172,6 +1289,9 @@
       border-color: var(--blue);
       color: var(--blue);
       background: rgba(74, 158, 255, 0.05);
+    }
+    html[data-theme="light"] .assistant-reset:hover {
+      background: rgba(30, 111, 217, 0.08);
     }
 
     /* ===== BACK TO TOP BUTTON ===== */
@@ -1208,6 +1328,9 @@
       background: rgba(74, 158, 255, 0.05);
       transform: translateY(-2px);
     }
+    html[data-theme="light"] .back-to-top:hover {
+      background: rgba(30, 111, 217, 0.08);
+    }
     .back-to-top:active {
       transform: scale(0.92);
     }
@@ -1226,6 +1349,9 @@
     .cap-cell:hover {
       background: rgba(74, 158, 255, 0.03);
       transform: translateY(-4px);
+    }
+    html[data-theme="light"] .cap-cell:hover {
+      background: rgba(30, 111, 217, 0.04);
     }
 
     .tag-cloud span:hover {
@@ -1252,6 +1378,17 @@
       .back-to-top { right: 12px; bottom: 66px; width: 32px; height: 32px; font-size: 14px; }
     }
   </style>
+  <script>
+    // Set theme before page renders to avoid flash
+    (function() {
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
 <a href="#arc" class="skip-link">Skip to content</a>
@@ -1281,8 +1418,18 @@
       <a href="#support">Support</a>
       <a href="#linktree">Links</a>
     </div>
-    <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobileMenu">
-      <span></span><span></span><span></span>
+    <div class="mobile-toggle-wrap">
+      <button type="button" class="theme-toggle" id="themeToggleMobile" aria-label="Toggle light and dark mode">
+        <span class="icon-moon" aria-hidden="true">🌙</span>
+        <span class="icon-sun" aria-hidden="true">☀️</span>
+      </button>
+      <button type="button" class="hamburger" id="hamburgerBtn" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode" style="display:none">
+      <span class="icon-moon" aria-hidden="true">🌙</span>
+      <span class="icon-sun" aria-hidden="true">☀️</span>
     </button>
   </div>
   <div class="mobile-menu" id="mobileMenu">
@@ -1423,14 +1570,14 @@
         <div class="support-card">
           <span class="coin">⟠</span>
           <span class="coin-name">Ethereum (ETH)</span>
-          <span class="address" onclick="copyAddress(this)">0x4531567Ab16fF573eE08b718a3592Cf86DBb4437</span>
+          <span class="address" onclick="copyAddress(this)">0x3118bBa6F12643074ac566C900c24BF514dc8F95</span>
           <button type="button" class="copy-btn" onclick="copyAddress(this.parentElement.querySelector('.address'))">📋 Copy</button>
         </div>
         <!-- USDC -->
         <div class="support-card">
           <span class="coin">💵</span>
           <span class="coin-name">USDC (ERC-20)</span>
-          <span class="address" onclick="copyAddress(this)">0x4531567Ab16fF573eE08b718a3592Cf86DBb4437</span>
+          <span class="address" onclick="copyAddress(this)">0x3118bBa6F12643074ac566C900c24BF514dc8F95</span>
           <button type="button" class="copy-btn" onclick="copyAddress(this.parentElement.querySelector('.address'))">📋 Copy</button>
         </div>
         <!-- Solana -->
@@ -1597,6 +1744,49 @@
 <!-- ===== SCRIPTS ===== -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    // ===== THEME TOGGLE =====
+    const themeToggleDesktop = document.getElementById('themeToggle');
+    const themeToggleMobile = document.getElementById('themeToggleMobile');
+    const html = document.documentElement;
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+    function setTheme(theme) {
+      if (theme === 'light') {
+        html.setAttribute('data-theme', 'light');
+        if (themeMeta) themeMeta.setAttribute('content', '#F5F7FA');
+      } else {
+        html.removeAttribute('data-theme');
+        if (themeMeta) themeMeta.setAttribute('content', '#0B0E14');
+      }
+      try {
+        localStorage.setItem('theme', theme);
+      } catch (e) {}
+    }
+
+    function toggleTheme() {
+      const current = html.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+      setTheme(current === 'light' ? 'dark' : 'light');
+    }
+
+    // Show desktop toggle only on desktop
+    function updateToggleVisibility() {
+      if (window.innerWidth > 720) {
+        themeToggleDesktop.style.display = 'inline-flex';
+      } else {
+        themeToggleDesktop.style.display = 'none';
+      }
+    }
+    updateToggleVisibility();
+    window.addEventListener('resize', updateToggleVisibility);
+
+    themeToggleDesktop.addEventListener('click', toggleTheme);
+    themeToggleMobile.addEventListener('click', toggleTheme);
+
+    // Sync theme color meta on load
+    if (html.getAttribute('data-theme') === 'light' && themeMeta) {
+      themeMeta.setAttribute('content', '#F5F7FA');
+    }
+
     // ===== HAMBURGER MENU =====
     const btn = document.getElementById('hamburgerBtn');
     const menu = document.getElementById('mobileMenu');
@@ -1646,7 +1836,6 @@
     const assistantSend = document.getElementById('assistantSend');
     const assistantMessages = document.getElementById('assistantMessages');
 
-    // ===== PORTFOLIO KNOWLEDGE BASE =====
     const portfolioInfo = {
       name: "Tumelo Masinga",
       title: "Application Development Specialist & Project Manager",
@@ -1809,17 +1998,15 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // ===== MOTION ONE ANIMATIONS (CONSISTENT & INTERACTIVE) =====
+    // ===== MOTION ONE ANIMATIONS =====
     if (typeof Motion !== 'undefined') {
       const { animate, stagger, inView } = Motion;
 
-      // 1. Hero entrance animation — runs on page load
       animate('.anim-hero', 
         { opacity: [0, 1], y: [24, 0] }, 
         { duration: 0.8, delay: stagger(0.08), easing: 'ease-out' }
       );
 
-      // 2. Section reveal — runs when each section comes into view
       inView('.anim-section', (info) => {
         animate(info.target, 
           { opacity: [0, 1], y: [40, 0] }, 
@@ -1827,7 +2014,6 @@
         );
       });
 
-      // 3. Staggered children — runs when grid/tag/link groups come into view
       inView('.anim-stagger', (info) => {
         animate(info.target.children, 
           { opacity: [0, 1], y: [20, 0] }, 
@@ -1835,13 +2021,11 @@
         );
       });
 
-      // 4. Subtle pulse on eyebrow dot
       animate('.eyebrow', 
         { opacity: [0.4, 1, 0.4] }, 
         { duration: 2.4, repeat: Infinity, easing: 'ease-in-out' }
       );
 
-      // 5. Gentle floating animation for the trace line
       animate('.trace svg line:nth-child(2)', 
         { opacity: [0.5, 1, 0.5] }, 
         { duration: 3, repeat: Infinity, easing: 'ease-in-out' }
